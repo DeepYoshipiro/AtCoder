@@ -1,0 +1,10 @@
+E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.csprojAssemblyReference.cache
+E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.AssemblyInfoInputs.cache
+E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.AssemblyInfo.cs
+E:\AtCoder\ABC14n\bin\Debug\netcoreapp2.1\ABC14n.deps.json
+E:\AtCoder\ABC14n\bin\Debug\netcoreapp2.1\ABC14n.runtimeconfig.json
+E:\AtCoder\ABC14n\bin\Debug\netcoreapp2.1\ABC14n.runtimeconfig.dev.json
+E:\AtCoder\ABC14n\bin\Debug\netcoreapp2.1\ABC14n.dll
+E:\AtCoder\ABC14n\bin\Debug\netcoreapp2.1\ABC14n.pdb
+E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.dll
+E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.pdb

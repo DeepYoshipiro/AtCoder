@@ -1,0 +1,11 @@
+E:\AtCoder\ABC138\abc138a\abc138a\bin\Debug\netcoreapp2.1\abc138a.deps.json
+E:\AtCoder\ABC138\abc138a\abc138a\bin\Debug\netcoreapp2.1\abc138a.runtimeconfig.json
+E:\AtCoder\ABC138\abc138a\abc138a\bin\Debug\netcoreapp2.1\abc138a.runtimeconfig.dev.json
+E:\AtCoder\ABC138\abc138a\abc138a\bin\Debug\netcoreapp2.1\abc138a.dll
+E:\AtCoder\ABC138\abc138a\abc138a\bin\Debug\netcoreapp2.1\abc138a.pdb
+E:\AtCoder\ABC138\abc138a\abc138a\obj\Debug\netcoreapp2.1\abc138a.csprojAssemblyReference.cache
+E:\AtCoder\ABC138\abc138a\abc138a\obj\Debug\netcoreapp2.1\abc138a.csproj.CoreCompileInputs.cache
+E:\AtCoder\ABC138\abc138a\abc138a\obj\Debug\netcoreapp2.1\abc138a.AssemblyInfoInputs.cache
+E:\AtCoder\ABC138\abc138a\abc138a\obj\Debug\netcoreapp2.1\abc138a.AssemblyInfo.cs
+E:\AtCoder\ABC138\abc138a\abc138a\obj\Debug\netcoreapp2.1\abc138a.dll
+E:\AtCoder\ABC138\abc138a\abc138a\obj\Debug\netcoreapp2.1\abc138a.pdb

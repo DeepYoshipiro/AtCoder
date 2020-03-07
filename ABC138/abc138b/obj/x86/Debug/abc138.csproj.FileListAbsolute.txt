@@ -1,0 +1,6 @@
+E:\AtCoder\ABC138\abc138b\obj\x86\Debug\abc138.csprojAssemblyReference.cache
+E:\AtCoder\ABC138\abc138b\obj\x86\Debug\abc138.csproj.CoreCompileInputs.cache
+E:\AtCoder\ABC138\abc138b\bin\Debug\ConsoleApplication.exe
+E:\AtCoder\ABC138\abc138b\bin\Debug\ConsoleApplication.pdb
+E:\AtCoder\ABC138\abc138b\obj\x86\Debug\ConsoleApplication.exe
+E:\AtCoder\ABC138\abc138b\obj\x86\Debug\ConsoleApplication.pdb

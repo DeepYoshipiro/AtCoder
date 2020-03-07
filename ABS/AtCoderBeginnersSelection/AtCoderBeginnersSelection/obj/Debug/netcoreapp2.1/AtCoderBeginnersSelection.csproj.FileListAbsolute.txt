@@ -1,0 +1,12 @@
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\obj\Debug\netcoreapp2.1\AtCoderBeginnersSelection.csprojAssemblyReference.cache
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\obj\Debug\netcoreapp2.1\AtCoderBeginnersSelection.csproj.CoreCompileInputs.cache
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\obj\Debug\netcoreapp2.1\AtCoderBeginnersSelection.AssemblyInfoInputs.cache
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\obj\Debug\netcoreapp2.1\AtCoderBeginnersSelection.AssemblyInfo.cs
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\bin\Debug\netcoreapp2.1\AtCoderBeginnersSelection.deps.json
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\bin\Debug\netcoreapp2.1\AtCoderBeginnersSelection.runtimeconfig.json
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\bin\Debug\netcoreapp2.1\AtCoderBeginnersSelection.runtimeconfig.dev.json
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\bin\Debug\netcoreapp2.1\AtCoderBeginnersSelection.dll
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\bin\Debug\netcoreapp2.1\AtCoderBeginnersSelection.pdb
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\obj\Debug\netcoreapp2.1\AtCoderBeginnersSelection.dll
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\obj\Debug\netcoreapp2.1\AtCoderBeginnersSelection.pdb
+E:\AtCoder\ABS\AtCoderBeginnersSelection\AtCoderBeginnersSelection\bin\Debug\netcoreapp2.1\Prob05Sim1.cs

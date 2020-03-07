@@ -1,0 +1,11 @@
+E:\AtCoder\AGC039\AGC039\bin\Debug\netcoreapp2.1\AGC039.deps.json
+E:\AtCoder\AGC039\AGC039\bin\Debug\netcoreapp2.1\AGC039.runtimeconfig.json
+E:\AtCoder\AGC039\AGC039\bin\Debug\netcoreapp2.1\AGC039.runtimeconfig.dev.json
+E:\AtCoder\AGC039\AGC039\bin\Debug\netcoreapp2.1\AGC039.dll
+E:\AtCoder\AGC039\AGC039\bin\Debug\netcoreapp2.1\AGC039.pdb
+E:\AtCoder\AGC039\AGC039\obj\Debug\netcoreapp2.1\AGC039.csprojAssemblyReference.cache
+E:\AtCoder\AGC039\AGC039\obj\Debug\netcoreapp2.1\AGC039.csproj.CoreCompileInputs.cache
+E:\AtCoder\AGC039\AGC039\obj\Debug\netcoreapp2.1\AGC039.AssemblyInfoInputs.cache
+E:\AtCoder\AGC039\AGC039\obj\Debug\netcoreapp2.1\AGC039.AssemblyInfo.cs
+E:\AtCoder\AGC039\AGC039\obj\Debug\netcoreapp2.1\AGC039.dll
+E:\AtCoder\AGC039\AGC039\obj\Debug\netcoreapp2.1\AGC039.pdb

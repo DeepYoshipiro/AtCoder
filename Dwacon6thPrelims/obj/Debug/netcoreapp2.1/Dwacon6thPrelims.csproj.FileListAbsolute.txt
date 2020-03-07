@@ -1,0 +1,11 @@
+E:\AtCoder\Dwacon6thPrelims\bin\Debug\netcoreapp2.1\Dwacon6thPrelims.deps.json
+E:\AtCoder\Dwacon6thPrelims\bin\Debug\netcoreapp2.1\Dwacon6thPrelims.runtimeconfig.json
+E:\AtCoder\Dwacon6thPrelims\bin\Debug\netcoreapp2.1\Dwacon6thPrelims.runtimeconfig.dev.json
+e:\AtCoder\Dwacon6thPrelims\bin\Debug\netcoreapp2.1\Dwacon6thPrelims.dll
+e:\AtCoder\Dwacon6thPrelims\bin\Debug\netcoreapp2.1\Dwacon6thPrelims.pdb
+e:\AtCoder\Dwacon6thPrelims\obj\Debug\netcoreapp2.1\Dwacon6thPrelims.csprojAssemblyReference.cache
+e:\AtCoder\Dwacon6thPrelims\obj\Debug\netcoreapp2.1\Dwacon6thPrelims.csproj.CoreCompileInputs.cache
+e:\AtCoder\Dwacon6thPrelims\obj\Debug\netcoreapp2.1\Dwacon6thPrelims.AssemblyInfoInputs.cache
+e:\AtCoder\Dwacon6thPrelims\obj\Debug\netcoreapp2.1\Dwacon6thPrelims.AssemblyInfo.cs
+e:\AtCoder\Dwacon6thPrelims\obj\Debug\netcoreapp2.1\Dwacon6thPrelims.dll
+e:\AtCoder\Dwacon6thPrelims\obj\Debug\netcoreapp2.1\Dwacon6thPrelims.pdb

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "Nikkei2019-2-qual/1.0.0": {
+        "runtime": {
+          "Nikkei2019-2-qual.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Nikkei2019-2-qual/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

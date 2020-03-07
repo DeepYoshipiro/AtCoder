@@ -1,0 +1,11 @@
+E:\AtCoder\Scores\200pt\bin\Debug\netcoreapp2.1\200pt.deps.json
+E:\AtCoder\Scores\200pt\bin\Debug\netcoreapp2.1\200pt.runtimeconfig.json
+E:\AtCoder\Scores\200pt\bin\Debug\netcoreapp2.1\200pt.runtimeconfig.dev.json
+e:\AtCoder\Scores\200pt\bin\Debug\netcoreapp2.1\200pt.dll
+e:\AtCoder\Scores\200pt\bin\Debug\netcoreapp2.1\200pt.pdb
+e:\AtCoder\Scores\200pt\obj\Debug\netcoreapp2.1\200pt.csprojAssemblyReference.cache
+e:\AtCoder\Scores\200pt\obj\Debug\netcoreapp2.1\200pt.csproj.CoreCompileInputs.cache
+e:\AtCoder\Scores\200pt\obj\Debug\netcoreapp2.1\200pt.AssemblyInfoInputs.cache
+e:\AtCoder\Scores\200pt\obj\Debug\netcoreapp2.1\200pt.AssemblyInfo.cs
+e:\AtCoder\Scores\200pt\obj\Debug\netcoreapp2.1\200pt.dll
+e:\AtCoder\Scores\200pt\obj\Debug\netcoreapp2.1\200pt.pdb

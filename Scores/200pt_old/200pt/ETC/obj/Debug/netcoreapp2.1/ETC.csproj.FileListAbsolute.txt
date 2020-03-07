@@ -1,0 +1,11 @@
+E:\AtCoder\Scores\200pt\200pt\ETC\bin\Debug\netcoreapp2.1\ETC.deps.json
+E:\AtCoder\Scores\200pt\200pt\ETC\bin\Debug\netcoreapp2.1\ETC.runtimeconfig.json
+E:\AtCoder\Scores\200pt\200pt\ETC\bin\Debug\netcoreapp2.1\ETC.runtimeconfig.dev.json
+E:\AtCoder\Scores\200pt\200pt\ETC\bin\Debug\netcoreapp2.1\ETC.dll
+E:\AtCoder\Scores\200pt\200pt\ETC\bin\Debug\netcoreapp2.1\ETC.pdb
+E:\AtCoder\Scores\200pt\200pt\ETC\obj\Debug\netcoreapp2.1\ETC.csprojAssemblyReference.cache
+E:\AtCoder\Scores\200pt\200pt\ETC\obj\Debug\netcoreapp2.1\ETC.csproj.CoreCompileInputs.cache
+E:\AtCoder\Scores\200pt\200pt\ETC\obj\Debug\netcoreapp2.1\ETC.AssemblyInfoInputs.cache
+E:\AtCoder\Scores\200pt\200pt\ETC\obj\Debug\netcoreapp2.1\ETC.AssemblyInfo.cs
+E:\AtCoder\Scores\200pt\200pt\ETC\obj\Debug\netcoreapp2.1\ETC.dll
+E:\AtCoder\Scores\200pt\200pt\ETC\obj\Debug\netcoreapp2.1\ETC.pdb
