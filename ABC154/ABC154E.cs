@@ -22,10 +22,10 @@ namespace ABC154
 
             for (int j = 1; j < N.Length; j++)
             {
-                result += f(N.Length - 2, K);
+                result += f(N, N.Length - 2, K);
                 for (int i = 1; i < N[1] - '0'; i++)
                 {
-                    result += f(N.Length - 2, K - 1);
+                    result += f(N, N.Length - 2, K - 1);
                 }
             }
 
@@ -49,7 +49,7 @@ namespace ABC154
                 ret /= k;
             }
             ret += f((char[])N.Clone(),digit - 1, nonZero);
-
+            return ret;
         }
     }
 }

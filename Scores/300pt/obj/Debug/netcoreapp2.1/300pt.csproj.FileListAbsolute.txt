@@ -4,7 +4,6 @@ E:\AtCoder\Scores\300pt\bin\Debug\netcoreapp2.1\300pt.runtimeconfig.dev.json
 e:\AtCoder\Scores\300pt\bin\Debug\netcoreapp2.1\300pt.dll
 e:\AtCoder\Scores\300pt\bin\Debug\netcoreapp2.1\300pt.pdb
 e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.csprojAssemblyReference.cache
-e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.csproj.CoreCompileInputs.cache
 e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.AssemblyInfoInputs.cache
 e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.AssemblyInfo.cs
 e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.dll
