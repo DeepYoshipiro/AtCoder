@@ -5,8 +5,6 @@ using System.Text;
 using static System.Console;
 using static System.Math;
 
-using System.Numerics;
-
 namespace AGC043
 {
     class CombinationFinder

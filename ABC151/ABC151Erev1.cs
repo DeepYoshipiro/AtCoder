@@ -7,7 +7,7 @@ using static System.Math;
 
 namespace ABC151
 {
-    class ABC151Erev
+    class ABC151Erev1
     {
         static void Main(string[] args)
         {

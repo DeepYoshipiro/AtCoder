@@ -24,11 +24,11 @@ namespace Stack
                 board[m] = new int[N];
             }
 
-            WriteLine(my.bfs(1, 0, 0) ? "Yes" : "No");
+            WriteLine(my.dfs(1, 0, 0) ? "Yes" : "No");
             ReadKey();
         }
 
-        internal bool bfs(int i, int v, int h)
+        internal bool dfs(int i, int v, int h)
         {
             if (v < 0 || v >= M || h < 0 || h >= N)
                 return false;
@@ -47,7 +47,7 @@ namespace Stack
 
             for (int t = 0; t < dv.Length; t++)
             {
-                if (bfs(i + 1, v + dv[t], h + dh[t])) return true;
+                if (dfs(i + 1, v + dv[t], h + dh[t])) return true;
             }
             
             board[v][h] = 0;
