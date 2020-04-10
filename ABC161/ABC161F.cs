@@ -13,14 +13,39 @@ namespace ABC161
         {
             long N = long.Parse(ReadLine());
 
-            long result = 0;
-            for (int K = 2; K <= N; K++)
+            IEnumerable<long> divideN = Divide(N);
+            List<long> result = new List<long>();
+            foreach (long d in divideN)
             {
-                if ((N - 1) % K == 0) result++;
-            } 
+                long cur = N;
+                while (cur % d == 0)
+                {
+                    cur /= d;
+                }
+                if (cur % d == 1) result.Add(d); 
+            }
 
-            WriteLine(result.ToString());
+            if (N - 1 > 1)
+            {
+                result.AddRange(Divide(N - 1).ToList());
+            }
+
+            WriteLine(result.Distinct().Count());
             ReadKey();
         }
+
+        static IEnumerable<long> Divide(long N)
+        {
+            List<long> result = new List<long>();
+            for (long i = 2; i * i <= N; i++)
+            {
+                if (N % i == 0)
+                {
+                    yield return i;
+                    yield return N / i;
+                }
+            }
+            yield return N;
+        }   
     }
 }
