@@ -12,30 +12,30 @@ namespace Panasonic2020
         static void Main(string[] args)
         {
             int N = int.Parse(ReadLine());
-            List<Tuple<string, int>>[] Stnd = new List<Tuple<string, int>>[N + 1];
+            List<Tuple<string, char>>[] Stnd = new List<Tuple<string, char>>[N + 1];
             for (int i = 0; i <= N; i++)
             {
-                Stnd[i] = new List<Tuple<string, int>>();
+                Stnd[i] = new List<Tuple<string, char>>();
             }
 
             //"a", 1;
-            Stnd[1].Add(new Tuple<string, int>("a", 1));
+            Stnd[1].Add(new Tuple<string, char>("a", 'a'));
 
-            string[] alpha = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
-            for (int i = 1; i < N; i++)
+            for (int i = 2; i <= N; i++)
             {
                 //"a", 1 → "aa", 1, "ab", 2;
-                foreach (Tuple<string, int> cur in Stnd[i])
+                foreach (Tuple<string, char> cur in Stnd[i - 1])
                 {
-                    for (int j = 0; j < cur.Item2; j++)
+                    for (char j = 'a'; j <= cur.Item2; j++)
                     {
-                        Stnd[i + 1].Add(new Tuple<string, int>(cur.Item1 + alpha[j], i));
+                        Stnd[i].Add(new Tuple<string, char>(cur.Item1 + j, cur.Item2));
                     }
-                    Stnd[i + 1].Add(new Tuple<string, int>(cur.Item1 + alpha[cur.Item2], i + 1));
+                    char next = (char)(cur.Item2 + 1);
+                    Stnd[i].Add(new Tuple<string, char>(cur.Item1 + next, next));
                 }
             }
 
-            foreach (Tuple<string, int> result in Stnd[N])
+            foreach (Tuple<string, char> result in Stnd[N])
             {
                 WriteLine(result.Item1);
             }
