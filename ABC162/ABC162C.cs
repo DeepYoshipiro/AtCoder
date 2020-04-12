@@ -11,19 +11,38 @@ namespace ABC162
     {
         static void Main(string[] args)
         {
-            // int N = int.Parse(ReadLine());
-            // char[] X = ReadLine().ToCharArray();
+            int K = int.Parse(ReadLine());
 
-            // int[] init = ReadLine().Split(' ')
-            //     .Select(n => int.Parse(n)).ToArray();
-            // int N = init[0];
-            // int K = init[1];
+            int result = 0;
+            for (int a = 1; a <= K; a++)
+            {
+                for (int b = 1; b <= K; b++)
+                {
+                    int gcd_ab = gcd(a, b);
+                    for (int c = 1; c <= K; c++)
+                    {
+                        result += gcd(gcd_ab, c);
+                    }
+                }
+            }
 
-            // int[] x = ReadLine().Split(' ')
-            //     .Select(n => int.Parse(n)).ToArray();
-
-            WriteLine("Hello World!");
+            WriteLine(result.ToString());
             ReadKey();
+        }
+
+        static int gcd(int m, int n)
+        {
+            int a = Max(m, n);
+            int b = Min(m, n);
+
+            int r = b;
+            while (r > 0)
+            {
+                r = a % b;
+                a = b;
+                b = r;
+            }
+            return a;
         }
     }
 }

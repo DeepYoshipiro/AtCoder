@@ -11,18 +11,18 @@ namespace ABC162
     {
         static void Main(string[] args)
         {
-            // int N = int.Parse(ReadLine());
-            // char[] X = ReadLine().ToCharArray();
+            long N = int.Parse(ReadLine());
 
-            // int[] init = ReadLine().Split(' ')
-            //     .Select(n => int.Parse(n)).ToArray();
-            // int N = init[0];
-            // int K = init[1];
+            long result = 0;
+            for (long i = 1; i <= N; i++)
+            {
+                if (i % 3 != 0 && i % 5 != 0)
+                {
+                    result += i;
+                }
+            }
 
-            // int[] x = ReadLine().Split(' ')
-            //     .Select(n => int.Parse(n)).ToArray();
-
-            WriteLine("Hello World!");
+            WriteLine(result.ToString());
             ReadKey();
         }
     }
