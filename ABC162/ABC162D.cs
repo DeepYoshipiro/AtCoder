@@ -19,10 +19,10 @@ namespace ABC162
             int B = 2;
             
             int[] C = new int[N];
-            List<int>[] cntC = new List<int>[3];
-            for (int i = 0; i < 3; i++)
+            int[][] cntC = new int[N + 1][];
+            for (int i = 0; i <= N; i++)
             {
-                cntC[i] = new List<int>();
+                cntC[i] = new int[3];
             }
 
             for (int i = 0; i < N; i++)
@@ -39,24 +39,24 @@ namespace ABC162
                         C[i] = B;
                         break;
                 }
-                cntC[C[i]].Add(i);
+                cntC[i][C[i]]++;    
+                for (int j = 0; j < 3; j++)
+                {
+                    cntC[i + 1][j] = cntC[i][j];
+                }
             }     
 
-            long result
-                 = cntC[R].Count() * cntC[G].Count() * cntC[B].Count();
-            for (int r = 0; r < cntC[R].Count(); r++)
+            long result = 0;
+            for (int i = 0; i < N; i++)
             {
-                for (int g = 0; g < cntC[G].Count(); g++)
+                for (int j = i + 1; j < N - 1; j++)
                 {
-                    int diff = Abs(cntC[R][r] - cntC[G][g]);
-                    int min = Min(cntC[R][r], cntC[G][g]) - diff;
-                    int max = Max(cntC[R][r], cntC[G][g]) + diff;
-                    
-                    if (min >= 0 && C[min] == B) result--;
-                    if (max < N && C[max] == B) result--;
+                    if (C[i] == C[j]) continue;
+                    int diff = j - i;
+                    int unused = 3 - C[i] - C[j];
 
-                    int mid = (cntC[R][r] + cntC[G][g]) / 2;
-                    if (diff % 2 == 0 && C[mid] == B) result--;
+                    result += cntC[N][unused] - cntC[j][unused];
+                    if (j + diff < N && C[j + diff] == unused) result--;   
                 }
             }
 
