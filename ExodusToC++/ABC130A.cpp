@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-int main()
+int main130A()
 {
     int X, A;
     cin >> X >> A;

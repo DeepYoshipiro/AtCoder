@@ -19,6 +19,7 @@ namespace ABC164
             // int M = init[1];
 
             WriteLine("Hello World!");
+            ReadKey();
         }
     }
 }

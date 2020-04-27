@@ -11,14 +11,28 @@ namespace ABC164
     {
         static void Main(string[] args)
         {
-            // int R = int.Parse(ReadLine());
-            
-            // int[] init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
-            // int N = init[0];
-            // int M = init[1];
+            int[] init = ReadLine().Split()
+                .Select(n => int.Parse(n)).ToArray();
+            int THp = init[0];
+            int TAttack = init[1];
+            int HHp = init[2];
+            int HAttack = init[3];
 
-            WriteLine("Hello World!");
+            bool TWin = false;
+            while (THp > 0 && HHp > 0)
+            {
+                HHp -= TAttack;
+                if (HHp <= 0)
+                {
+                    TWin = true;
+                    break;
+                }
+
+                THp -= HAttack;
+            }
+
+            WriteLine(TWin ? "Yes" : "No");
+            ReadKey();
         }
     }
 }

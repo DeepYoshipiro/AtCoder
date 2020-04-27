@@ -1,0 +1,11 @@
+E:\AtCoder\ABC164\bin\Debug\netcoreapp3.1\ABC164.exe
+E:\AtCoder\ABC164\bin\Debug\netcoreapp3.1\ABC164.deps.json
+E:\AtCoder\ABC164\bin\Debug\netcoreapp3.1\ABC164.runtimeconfig.json
+E:\AtCoder\ABC164\bin\Debug\netcoreapp3.1\ABC164.runtimeconfig.dev.json
+E:\AtCoder\ABC164\bin\Debug\netcoreapp3.1\ABC164.dll
+E:\AtCoder\ABC164\bin\Debug\netcoreapp3.1\ABC164.pdb
+E:\AtCoder\ABC164\obj\Debug\netcoreapp3.1\ABC164.csprojAssemblyReference.cache
+E:\AtCoder\ABC164\obj\Debug\netcoreapp3.1\ABC164.AssemblyInfoInputs.cache
+E:\AtCoder\ABC164\obj\Debug\netcoreapp3.1\ABC164.AssemblyInfo.cs
+E:\AtCoder\ABC164\obj\Debug\netcoreapp3.1\ABC164.dll
+E:\AtCoder\ABC164\obj\Debug\netcoreapp3.1\ABC164.pdb
