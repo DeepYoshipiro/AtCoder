@@ -9,6 +9,8 @@ namespace _300pt
 {
     class ABC125C
     {
+        // DP
+
         static void Main(string[] args)
         {
             int N = int.Parse(ReadLine());
@@ -19,7 +21,7 @@ namespace _300pt
             int firstLargeNum = A[0];
             int secondLargeNum = A[1];
 
-            int[][] dpGCD = new int[2][];
+            int[][] dpGCD = new int[3][];
             for (int j = 0; j <= 2; j++)
             {
                 dpGCD[j] = new int[N];
@@ -31,13 +33,13 @@ namespace _300pt
             NumberTheory nt = new NumberTheory();
             for (int i = 1; i < N; i++)
             {
-                dpGCD[i][0] = nt.gcd(dpGCD[i - 1][0], A[i]);
-                dpGCD[i][1] =
-                     Min(nt.gcd(dpGCD[i - 1][0], firstLargeNum)
-                        , nt.gcd(dpGCD[i - 1][1], A[i]));
-                dpGCD[i][2] =
-                     Min(nt.gcd(dpGCD[i - 1][0], secondLargeNum)
-                        , nt.gcd(dpGCD[i - 1][2], A[i]));
+                dpGCD[0][i] = nt.gcd(dpGCD[0][i - 1], A[i]);
+                dpGCD[1][i] =
+                     Max(nt.gcd(dpGCD[0][i - 1], firstLargeNum)
+                        , nt.gcd(dpGCD[1][i - 1], A[i]));
+                dpGCD[2][i] =
+                     Max(nt.gcd(dpGCD[0][i - 1], secondLargeNum)
+                        , nt.gcd(dpGCD[2][i - 1], A[i]));
             }
 
             WriteLine(Max(dpGCD[1][N - 1], dpGCD[2][N - 1]));
