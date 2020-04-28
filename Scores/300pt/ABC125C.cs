@@ -33,13 +33,13 @@ namespace _300pt
             NumberTheory nt = new NumberTheory();
             for (int i = 1; i < N; i++)
             {
-                dpGCD[0][i] = nt.gcd(dpGCD[0][i - 1], A[i]);
+                dpGCD[0][i] = nt.GCD(dpGCD[0][i - 1], A[i]);
                 dpGCD[1][i] =
-                     Max(nt.gcd(dpGCD[0][i - 1], firstLargeNum)
-                        , nt.gcd(dpGCD[1][i - 1], A[i]));
+                     Max(nt.GCD(dpGCD[0][i - 1], firstLargeNum)
+                        , nt.GCD(dpGCD[1][i - 1], A[i]));
                 dpGCD[2][i] =
-                     Max(nt.gcd(dpGCD[0][i - 1], secondLargeNum)
-                        , nt.gcd(dpGCD[2][i - 1], A[i]));
+                     Max(nt.GCD(dpGCD[0][i - 1], secondLargeNum)
+                        , nt.GCD(dpGCD[2][i - 1], A[i]));
             }
 
             WriteLine(Max(dpGCD[1][N - 1], dpGCD[2][N - 1]));
@@ -48,7 +48,7 @@ namespace _300pt
 
         class BaseAlgorithm
         {
-            internal void swap(ref int A, ref int B)
+            internal void Swap(ref int A, ref int B)
             {
                 int tmp = A;
                 A = B;
@@ -58,12 +58,12 @@ namespace _300pt
 
         class NumberTheory
         {
-            internal int gcd(int A, int B)
+            internal int GCD(int A, int B)
             {
                 if (A < B)
                 {
                     BaseAlgorithm ba = new BaseAlgorithm();
-                    ba.swap(ref A, ref B);
+                    ba.Swap(ref A, ref B);
                 }
 
                 int R = A;
