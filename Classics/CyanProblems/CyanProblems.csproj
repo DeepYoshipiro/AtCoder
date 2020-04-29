@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <StartupObject>CyanProblems.ABC014C</StartupObject>
+    <StartupObject>CyanProblems.IndeedNow_qualB_C</StartupObject>
   </PropertyGroup>
 
 </Project>

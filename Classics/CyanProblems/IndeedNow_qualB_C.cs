@@ -1,73 +1,54 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using static System.Console;
 using static System.Math;
 
-namespace Library
+namespace CyanProblems
 {
-    class LibraryTest
+    class IndeedNow_qualB_C
     {
         static void Main(string[] args)
         {
-            // // Swap, GCD
-            // int A = 38;
-            // int B = 16;
-            // BaseAlgorithm ba = new BaseAlgorithm();
-            // ba.Swap(ref A, ref B);            
-            // // WriteLine("{0} {1}", A, B);
-            // NumberTheory nt = new NumberTheory();
-            // int result = nt.GCD(A, B);
-            // WriteLine(result.ToString());
+            int N = int.Parse(ReadLine());
+            bool[] visited = new bool[N + 1];
 
-            // Priority Queue
-            int[] input = {6, 9, 5, 7, 5, 0, 4, 2, 2, 7};
-            PriorityQueue_Asc pq = new PriorityQueue_Asc();
-
-            for (int i = 0; i < input.Length; i++)
+            PriorityQueue_Asc[] to = new PriorityQueue_Asc[N + 1];
+            for (int i = 1; i <= N; i++)
             {
-                pq.Push(input[i]);
+                to[i] = new PriorityQueue_Asc();
             }
 
-            while (pq.Count() > 0)
+            for (int i = 0; i < N - 1; i++)
             {
-                WriteLine(pq.Pop());
+                int[] way = ReadLine().Split()
+                    .Select(n => int.Parse(n)).ToArray();
+                to[way[0]].Push(way[1]);
+                to[way[1]].Push(way[0]);
             }
 
+            PriorityQueue_Asc nextVisit = new PriorityQueue_Asc();
+            nextVisit.Push(1);
+
+            StringBuilder result = new StringBuilder();
+            while (nextVisit.Count() > 0)
+            {
+                int cur = nextVisit.Pop();
+                if (visited[cur]) continue;
+                result.Append(cur.ToString() + " ");
+                visited[cur] = true;
+
+                while (to[cur].Count() > 0)
+                {
+                    int next = to[cur].Pop();
+                    if (visited[next]) continue;
+                    nextVisit.Push(next);                    
+                }
+            }
+
+            WriteLine(result.ToString().TrimEnd(' '));
             ReadKey();
-        }
-    }
-
-    class BaseAlgorithm
-    {
-        internal void Swap(ref int A, ref int B)
-        {
-            int tmp = A;
-            A = B;
-            B = tmp;
-        }
-    }
-
-    class NumberTheory
-    {
-        internal int GCD(int A, int B)
-        {
-            if (A < B)
-            {
-                BaseAlgorithm ba = new BaseAlgorithm();
-                ba.Swap(ref A, ref B);
-            }
-
-            int R = A;
-
-            while (R > 0)
-            {
-                R = A % B;
-                A = B;
-                B = R;
-            }
-            return A;
         }
     }
 
