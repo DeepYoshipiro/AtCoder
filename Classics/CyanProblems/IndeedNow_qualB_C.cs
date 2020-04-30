@@ -52,6 +52,22 @@ namespace CyanProblems
         }
     }
 
+    class BaseAlgorithm
+    {
+        internal void Swap(ref int A, ref int B)
+        {
+            int tmp = A;
+            A = B;
+            B = tmp;
+        }
+
+        internal void Swap(int A, int B)
+        {
+            int tmp = A;
+            A = B;
+            B = tmp;
+        }
+    }
     internal class PriorityQueue_Asc
     {
         List<int> data;
@@ -88,10 +104,8 @@ namespace CyanProblems
             int parent = (child % 2 == 0 ? (child - 2) / 2 : (child - 1) / 2);
             if (data[child] < data[parent])
             {
-                int A = data[child];
-                int B = data[parent];
-                data[child] = B;
-                data[parent] = A;
+                BaseAlgorithm ba = new BaseAlgorithm();
+                ba.Swap(data[child], data[parent]);
                 UpHeap(parent);
             }
         }
@@ -117,10 +131,8 @@ namespace CyanProblems
 
             if (child > parent)
             {
-                int A = data[child];
-                int B = data[parent];
-                data[child] = B;
-                data[parent] = A;
+                BaseAlgorithm ba = new BaseAlgorithm();
+                ba.Swap(data[child], data[parent]);
                 DownHeap(child);
             }
         }

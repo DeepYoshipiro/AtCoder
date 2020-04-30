@@ -47,6 +47,13 @@ namespace Library
             A = B;
             B = tmp;
         }
+
+        internal void Swap(int A, int B)
+        {
+            int tmp = A;
+            A = B;
+            B = tmp;
+        }
     }
 
     class NumberTheory
