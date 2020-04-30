@@ -57,49 +57,7 @@ namespace _400pt
             }
 
             WriteLine(result.Min().ToString());
-        
-            // if (W > H) ba.Swap(ref W, ref H);
-            // List<long> firstCutInf = new List<long>();
-            // firstCutInf.Add(Measure(W, ref H, H / 3));
-            // if (H % 2 == 0 || W % 2 == 0)
-            // {
-            //     firstCutInf.Add((W * H) / 2);
-            // }
-            // else
-            // {
-            //     if (W > H) ba.Swap(ref W, ref H);
-            //     firstCutInf.Add(Measure(W, ref H, H / 2));
-            //     firstCutInf.Add(W * H);
-            // }
-            // firstCutInf.Sort();
-            // long firstCutDiff = firstCutInf.Last() - firstCutInf.First();
-
-            // H = init[0];
-            // W = init[1];
-            // if (W > H) ba.Swap(ref W, ref H);
-            // List<long> firstCutSup = new List<long>();
-            // firstCutSup.Add(Measure(W, ref H, (H + 2) / 3));
-            // if (H % 2 == 0 || W % 2 == 0)
-            // {
-            //     firstCutSup.Add((W * H) / 2);
-            // }
-            // else
-            // {
-            //     if (W > H) ba.Swap(ref W, ref H);
-            //     firstCutSup.Add(Measure(W, ref H, H / 2));
-            //     firstCutSup.Add(W * H);
-            // }
-            // firstCutSup.Sort();
-            // long secondCutDiff = firstCutSup.Last() - firstCutSup.First();
-
-            // WriteLine(Min(firstCutDiff, secondCutDiff));
             ReadKey();
-        }
-
-        static long Measure(long W, ref long H, long cutH)
-        {
-            H -= cutH;
-            return W * cutH;
         }
     }
 
