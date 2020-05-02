@@ -16,109 +16,66 @@ namespace _500pt
                     .Select(n => long.Parse(n)).ToArray();
 
             List<long> plus = A.Where(n => n >= 0)
-                    .OrderByDescending(n => n).ToList();
-            List<long> minus = A.Where(n => n < 0)
                     .OrderBy(n => n).ToList();
-            
-            List<Substraction> result = new List<Substraction>();
+            List<long> minus = A.Where(n => n < 0)
+                    .OrderByDescending(n => n).ToList();
 
-            while (Abs(plus.Count() - minus.Count()) > 1 && plus.Count() + minus.Count > 2)
+            int plusCursor = 0;
+            int minusCursor = 0;
+
+            List<Substraction> process = new List<Substraction>();
+            long result = 0;
+            while (
+                (plus.Count() - plusCursor)
+                 + (minus.Count() - minusCursor) > 1)
             {
-                if (plus.Count() > minus.Count())
+                int plusFlag = Sign((plus.Count() - plusCursor) - 1);
+                int minusFlag = Sign((minus.Count() - minusCursor) - 1);
+                switch (plusFlag * 3 + minusFlag)
                 {
-                    long newMinus = plus.Last() - plus.First();
-                    result.Add(new Substraction(plus.Last(), plus.First()));
-                    plus.RemoveAt(plus.Count() - 1);
-                    plus.RemoveAt(0);
-                    if (newMinus < 0)
-                    {
-                        minus.Add(newMinus);
-                    }
-                    else
-                    {
-                        plus.Add(newMinus);
-                    }
-                    if (plus.Count() == 2)
-                    {
-                        plus.Sort();
-                        plus.Reverse();
-                    }
-                }
-                else
-                {
-                    long newPlus = minus.Last() - minus.First();
-                    result.Add(new Substraction(minus.Last(), minus.First()));
-                    plus.Add(newPlus);
-                    minus.RemoveAt(minus.Count() - 1);
-                    minus.RemoveAt(0);
-                    if (minus.Count() == 2)
-                    {
-                        minus.Sort();
-                    }
-                }
-
-            }
-
-            List<long> process = new List<long>();
-            int pairDiff = plus.Count() - minus.Count();
-            int sign = 1;
-            switch (pairDiff)
-            {
-                case 1:
-                    process.Add(plus.First());
-                    plus.RemoveAt(0);
-                    break;
-                case -1:
-                    process.Add(minus.First());
-                    minus.RemoveAt(0);
-                    sign = -1;
-                    break;
-                default:
-                    break;
-            }
-
-            for (int i = 0; i < plus.Count(); i++)
-            {
-                sign *= -1;
-                if (sign > 0)
-                {
-                    result.Add(new Substraction(plus[i], minus[i]));
-                    process.Add(plus[i] - minus[i]);
-                }
-                else
-                {
-                    result.Add(new Substraction(minus[i], plus[i]));
-                    process.Add(minus[i] - plus[i]);
+                    case 4: // plus >= 2, minus >= 2
+                    case 3: // plus >= 2, minus = 1
+                        result = minus[minusCursor] - plus[plusCursor];
+                        process.Add(new Substraction(minus[minusCursor], plus[plusCursor]));
+                        minusCursor++;
+                        plusCursor++;
+                        minus.Add(result);
+                        break;
+                    case 1: // plus = 1, minus >= 2
+                    case 0: // plus = 1, minus = 1
+                        result = plus[plusCursor] - minus[minusCursor];
+                        process.Add(new Substraction(plus[plusCursor], minus[minusCursor]));
+                        plusCursor++;
+                        minusCursor++;
+                        plus.Add(result);
+                        break;
+                    case 2: // plus >= 2, minus = 0;
+                        if (plus.Count() - plusCursor == 2)
+                        {
+                            result = plus[plusCursor + 1] - plus[plusCursor];
+                            process.Add(new Substraction(plus[plusCursor + 1], plus[plusCursor]));
+                            plusCursor += 2;
+                            plus.Add(result);
+                        }
+                        else
+                        {
+                            result = plus[plusCursor] - plus[plusCursor + 1];
+                            process.Add(new Substraction(plus[plusCursor], plus[plusCursor + 1]));
+                            plusCursor += 2;
+                            minus.Add(result);
+                        }
+                        break;
+                    default: // plus = 0, minus >= 2
+                        result = minus[minusCursor] - minus[minusCursor + 1];
+                        process.Add(new Substraction(minus[minusCursor], minus[1]));
+                        minusCursor += 2;
+                        plus.Add(result);
+                        break;
                 }
             }
 
-            while (process.Count > 2)
-            {
-                result.Add(new Substraction(process[0], process[1]));
-                process[1] -= process[0];
-                process.RemoveAt(0);
-            }
-
-            long sum;
-            if (process.Count >= 2)
-            {
-                sum = Abs(process[0] - process[1]);
-                if (process[0] - process[1] >= 0)
-                {
-                    result.Add(new Substraction(process[0], process[1]));
-                }
-                else
-                {
-                    result.Add(new Substraction(process[1], process[0]));
-                }
-            }
-            else
-            {
-                sum = process[0];
-            }
-
-            WriteLine(sum.ToString());
-            foreach(Substraction cur in result)
+            WriteLine(result.ToString());
+            foreach(Substraction cur in process)
             {            
                 WriteLine("{0} {1}", cur.x, cur.y);
             }
@@ -136,5 +93,16 @@ namespace _500pt
             x = _x;
             y = _y;
         }
-    } 
+    }
+
+    class BaseAlgorithm
+    {
+        internal void Swap(int A, int B)
+        {
+            int tmp = A;
+            A = B;
+            B = tmp;
+        }
+    }
+
 }
