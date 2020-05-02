@@ -11,15 +11,24 @@ namespace ABC165
     {
         static void Main(string[] args)
         {
-            // int N = int.Parse(ReadLine());
-            // int[] init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
-            
-            // long N = int.Parse(ReadLine());
-            // long[] init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            int K = int.Parse(ReadLine());
 
-            WriteLine("Hello World!");
+            int[] init = ReadLine().Split()
+                .Select(n => int.Parse(n)).ToArray();
+            int A = init[0];
+            int B = init[1];
+
+            bool result = false;
+            for (int i = A; i <= B; i++)
+            {
+                if (i % K == 0)
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            WriteLine(result ? "OK" : "NG");
             ReadKey();
         }
     }

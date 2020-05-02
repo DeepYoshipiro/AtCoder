@@ -11,15 +11,17 @@ namespace ABC165
     {
         static void Main(string[] args)
         {
-            // int N = int.Parse(ReadLine());
-            // int[] init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
-            
-            // long N = int.Parse(ReadLine());
-            // long[] init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            long deposit = 100;
+            long X = long.Parse(ReadLine());
 
-            WriteLine("Hello World!");
+            int result = 0;
+            while (deposit < X)
+            {
+                deposit = (long)(deposit * 1.01);
+                result++;
+            }
+
+            WriteLine(result.ToString());
             ReadKey();
         }
     }

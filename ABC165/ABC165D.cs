@@ -11,15 +11,21 @@ namespace ABC165
     {
         static void Main(string[] args)
         {
-            // int N = int.Parse(ReadLine());
-            // int[] init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
-            
-            // long N = int.Parse(ReadLine());
-            // long[] init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            long[] init = ReadLine().Split()
+                .Select(n => long.Parse(n)).ToArray();
+            long A = init[0];
+            long B = init[1];
+            long N = init[2];
 
-            WriteLine("Hello World!");
+            long rest = N % B;
+            if (B <= N)
+            {
+                N -= rest + 1;
+            }
+            long result = (A * N) / B;
+            result -= A * (N / B);
+
+            WriteLine(result.ToString());
             ReadKey();
         }
     }
