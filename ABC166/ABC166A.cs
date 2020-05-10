@@ -11,15 +11,9 @@ namespace ABC166
     {
         static void Main(string[] args)
         {
-            // int N = int.Parse(ReadLine());
-            // int[] init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
+            string S = ReadLine();
 
-            // long N = long.Parse(ReadLine());
-            // long[] init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
-
-            WriteLine("Hello World!");
+            WriteLine(S == "ABC" ? "ARC" : "ABC");
             ReadKey();
         }
     }

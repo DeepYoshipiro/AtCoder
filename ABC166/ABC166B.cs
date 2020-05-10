@@ -11,15 +11,30 @@ namespace ABC166
     {
         static void Main(string[] args)
         {
-            // int N = int.Parse(ReadLine());
-            // int[] init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
+            int[] init = ReadLine().Split()
+                .Select(n => int.Parse(n)).ToArray();
+            int N = init[0];
+            int K = init[1];
 
-            // long N = long.Parse(ReadLine());
-            // long[] init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            bool[] haveSweet = new bool[N + 1];
+            for (int i = 0; i < K; i++)
+            {
+                int d = int.Parse(ReadLine());
+                int[] sweet = ReadLine().Split()
+                    .Select(n => int.Parse(n)).ToArray();
+                for (int j = 0; j < d; j++)
+                {
+                    haveSweet[sweet[j]] = true; 
+                }
+            }
 
-            WriteLine("Hello World!");
+            int result = 0;
+            for (int k = 1; k <= N; k++)
+            {
+                result += haveSweet[k] ? 0 : 1;
+            }
+
+            WriteLine(result.ToString());
             ReadKey();
         }
     }
