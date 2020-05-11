@@ -21,20 +21,22 @@ namespace Library
             // int result = nt.GCD(A, B);
             // WriteLine(result.ToString());
 
-            // Priority Queue
-            int[] input = {6, 9, 5, 7, 5, 0, 4, 2, 2, 7};
-            PriorityQueue_Asc pq = new PriorityQueue_Asc();
+            // // Priority Queue
+            // int[] input = {6, 9, 5, 7, 5, 0, 4, 2, 2, 7};
+            // var pq = new PriorityQueue_Asc();
 
-            for (int i = 0; i < input.Length; i++)
-            {
-                pq.Push(input[i]);
-            }
+            // for (int i = 0; i < input.Length; i++)
+            // {
+            //     pq.Push(input[i]);
+            // }
 
-            while (pq.Count() > 0)
-            {
-                WriteLine(pq.Pop());
-            }
+            // while (pq.Count() > 0)
+            // {
+            //     WriteLine(pq.Pop());
+            // }
 
+            // BinaryTree
+            
             ReadKey();
         }
     }
@@ -114,6 +116,8 @@ namespace Library
             int parent = (child % 2 == 0 ? (child - 2) / 2 : (child - 1) / 2);
             if (data[child] < data[parent])
             {
+                // var ba = new BaseAlgorithm();
+                // ba.Swap(data[child], data[parent]);
                 int A = data[child];
                 int B = data[parent];
                 data[child] = B;
@@ -143,6 +147,8 @@ namespace Library
 
             if (child > parent)
             {
+                // var ba = new BaseAlgorithm();
+                // ba.Swap(data[child], data[parent]);
                 int A = data[child];
                 int B = data[parent];
                 data[child] = B;

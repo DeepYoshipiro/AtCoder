@@ -11,15 +11,15 @@ namespace ABC167
     {
         static void Main(string[] args)
         {
-            // var N = int.Parse(ReadLine());
-            // int[] init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
-            
-            // var N = long.Parse(ReadLine());
-            // long[] init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            string S = ReadLine();
+            string T = ReadLine();
 
-            WriteLine("Hello World!");
+            bool result = false;
+            if (S.Length + 1 == T.Length
+                && S.Equals(T.Substring(0, S.Length)))
+                result = true;
+
+            WriteLine(result ? "Yes" : "No");
             ReadKey();
         }
     }
