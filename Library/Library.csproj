@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Library</RootNamespace>
+    <StartupObject>Library.DFSTest</StartupObject>
   </PropertyGroup>
 
 </Project>
