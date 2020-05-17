@@ -7,39 +7,64 @@ using static System.Math;
 
 namespace ABC165
 {
+
     class ABC165C
     {
+        static int N;
+        static int M;
+        static int Q;
+        static int[][] query;
+
         static void Main(string[] args)
         {
             int[] init = ReadLine().Split()
                 .Select(n => int.Parse(n)).ToArray();
-            int N = init[0];
-            int M = init[1];
-            int Q = init[2];
+            N = init[0];
+            M = init[1];
+            Q = init[2];
 
-            int[] A = (new int[]{0})
-                .Concat(
-                    ReadLine().Split().Select(n => int.Parse(n))
-                ).ToArray();
-
-            long result = 0;
-            for (int q = 1; q <= Q; q++)
+            query = new int[Q][];
+            for (int q = 0; q < Q; q++)
             {
-                int[] query = ReadLine().Split()
+                query[q] = ReadLine().Split()
                     .Select(n => int.Parse(n)).ToArray();
-                int a = query[0];
-                int b = query[1];
-                int c = query[2];
-                int d = query[3];
+            }
 
-                if (A[b] - A[a] == c)
-                {
-                    result += d;
-                }
-            }        
+            var A = new List<int>();
+            long result = DFS(A, 1);
 
             WriteLine(result.ToString());
             ReadKey();
+        }
+
+        static long DFS(List<int> A, int Ai)
+        {
+            long result = 0;
+            if (A.Count() == N)
+            {
+                long score = 0;
+                for (int q = 0; q < Q; q++)
+                {
+                    int a = query[q][0];
+                    int b = query[q][1];
+                    int c = query[q][2];
+                    int d = query[q][3];
+
+                    if (A[b - 1] - A[a - 1] == c)
+                    {
+                        score += d;
+                    }
+                }
+                return score;
+            }
+
+            for (int i = Ai; i <= M; i++)
+            {
+                A.Add(i);
+                result = Max(DFS(A, i), result);
+                A.RemoveAt(A.Count() - 1);
+            }
+            return result;
         }
     }
 }
