@@ -11,19 +11,58 @@ namespace ABC168
     {
         static void Main(string[] args)
         {
-            // var N = int.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
+            var init = ReadLine().Split()
+                .Select(n => int.Parse(n)).ToArray();
+            var N = init[0];
+            var M = init[1];
 
-            // var N = long.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            var Way = new List<int>[N + 1];
+            var visited = new int[N + 1];
+            for (int i = 1; i <= N; i++)
+            {
+                Way[i] = new List<int>();
+                visited[i] = int.MaxValue;
+            }
 
-            // var S = ReadLine().ToCharArray();
-            // var S = ReadLine();
-            // var S = ReadLine().ToArray();
+            for (int m = 0; m < M; m++)
+            {
+                var to = ReadLine().Split()
+                    .Select(n => int.Parse(n)).ToArray();
+                Way[to[0]].Add(to[1]);
+                Way[to[1]].Add(to[0]);
+            }
 
-            WriteLine("Hello World!");
+            visited[1] = 0;
+            int visitedRoom = 1;
+            var nextVisit = new Queue<int>();
+            nextVisit.Enqueue(1);
+            while (nextVisit.Count > 0)
+            {
+                int cur = nextVisit.Dequeue();
+
+                foreach (int next in Way[cur])
+                {
+                    if (visited[next] > 2 * N)
+                    {
+                        visited[next] = cur;
+                        visitedRoom++;
+                        nextVisit.Enqueue(next);
+                    }
+                }
+            }
+
+            if (visitedRoom == N)
+            {
+                WriteLine("Yes");
+                for (int i = 2; i <= N; i++)
+                {
+                    WriteLine(visited[i].ToString());
+                }
+            }
+            else
+            {
+                WriteLine("No");
+            }
             ReadKey();
         }
     }
