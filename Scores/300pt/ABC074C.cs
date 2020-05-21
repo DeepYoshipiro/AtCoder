@@ -9,15 +9,6 @@ namespace _300pt
 {
     class ABC074C
     {
-        static int A;
-        static int B;
-        static int C;
-        static int D;
-        static int E;
-        static int F;
-        static int resultSugar;
-        static int resultWater;
-
         static void Main(string[] args)
         {
             var init = ReadLine().Split()
@@ -29,101 +20,54 @@ namespace _300pt
             int E = init[4];
             int F = init[5];
 
-            var water = new bool[(F / 100) + 1];
-            for (int a = 0; a < F / 100; a++)
+            var waterPoorAble = new bool[(F / 100) + 1];
+            for (int a = 0; a <= F / 100; a++)
             {
-                for (int b = 0; b < F / 100; b++)
+                for (int b = 0; b <= F / 100; b++)
                 {
                     var w = A * a + B * b;
                     if (w > F / 100) break;
-                    water[w] = true;
+                    waterPoorAble[w] = true;
                 }
             }
-            water[0] = false;
+            waterPoorAble[0] = false;
 
-            var sugar = new bool[F + 1];
+            var sugarAddAble = new bool[F + 1];
             for (int c = 0; c < F; c++)
             {
                 for (int d = 0; d < F; d++)
                 {
                     var s = C * c + D * d;
                     if (s > F) break;
-                    sugar[s] = true;
+                    sugarAddAble[s] = true;
                 }
             }
 
-            WriteLine("{0} {1}", resultSugar + resultWater, resultSugar);
+            int resultSugarWater = 100 * A;
+            int resultSugar = 0;
+
+            double maxDensity = 0;
+            for (int w = 1; w <= F / 100; w++)
+            {
+                if (!waterPoorAble[w]) continue;
+                int maxSugar = E * w;
+                for (int s = maxSugar; s >= 0; s--)
+                {
+                    if (!sugarAddAble[s]) continue;
+                    if (w * 100 + s > F) continue;
+                    double density = (double)s / (double)(w * 100 + s);
+                    if (density > maxDensity)
+                    {
+                        maxDensity = density;
+                        resultSugarWater = w * 100 + s;
+                        resultSugar = s;
+                    } 
+                    break;
+                }
+            }
+
+            WriteLine("{0} {1}", resultSugarWater, resultSugar);
             ReadKey();
-        }
-
-        static double DFS(int sugar, int water)
-        {
-            int sugarWater = sugar + water;
-            if (sugarWater > F)
-            {
-                return 0;
-            }
-
-            double density = 0;
-            if (sugarWater > 0)
-            {
-                density = (double)sugar / (double)sugarWater;
-            }
-
-            if (water > 0 && density > (double)E / 100d)
-            {
-                return 0;
-            }
-
-            if (sugarWater > F - Min(C, D))
-            {
-                return (double)sugar / (double)sugarWater;
-            }
-
-            if (sugar == 0)
-            {
-                DFS(sugar, water + A);
-                DFS(sugar, water + B);
-            }
-
-            if (water > 0)
-            {
-                if (DFS(sugar + C, water) > density)
-                {
-                    density = (double)(sugar + C) / (double)(sugarWater + C);
-                    resultSugar = sugar + C;
-                    resultWater = water;
-                }
-
-                if (DFS(sugar + D, water) > density)
-                {
-                    density = (double)(sugar + D)/ (double)(sugarWater + D);
-                    resultSugar = sugar + D;
-                    resultWater = water;
-                }
-            }
-
-            return density;
         }
     }
 }
-        // class SugarWater
-        // {
-        //     internal int SugarWeight {get;}
-        //     internal int WaterWeight {get;}
-        //     internal double Density {get;}
-
-        //     internal SugarWater(int sugar, int water)
-        //     {
-        //         SugarWeight = sugar;
-        //         WaterWeight = water;
-        //         if (sugar + water == 0)
-        //         {
-        //             Density = 0;
-        //         }
-        //         else
-        //         {
-        //             Density = (double)(sugar / (sugar + water));
-        //         }
-        //     }
-        // }
