@@ -1,0 +1,11 @@
+E:\AtCoder\AGC044\bin\Debug\netcoreapp3.1\AGC044.exe
+E:\AtCoder\AGC044\bin\Debug\netcoreapp3.1\AGC044.deps.json
+E:\AtCoder\AGC044\bin\Debug\netcoreapp3.1\AGC044.runtimeconfig.json
+E:\AtCoder\AGC044\bin\Debug\netcoreapp3.1\AGC044.runtimeconfig.dev.json
+E:\AtCoder\AGC044\bin\Debug\netcoreapp3.1\AGC044.dll
+E:\AtCoder\AGC044\bin\Debug\netcoreapp3.1\AGC044.pdb
+E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.csprojAssemblyReference.cache
+E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.AssemblyInfoInputs.cache
+E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.AssemblyInfo.cs
+E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.dll
+E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.pdb
