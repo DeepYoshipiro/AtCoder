@@ -5,25 +5,41 @@ using System.Text;
 using static System.Console;
 using static System.Math;
 
+using System.Numerics;
+
 namespace ABC169
 {
     class ABC169B
     {
         static void Main(string[] args)
         {
-            // var N = int.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
+            var N = int.Parse(ReadLine());
+            var A = ReadLine().Split()
+                .Select(n => BigInteger.Parse(n)).ToArray();
 
-            // var N = long.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            BigInteger result = 1;
 
-            // var S = ReadLine().ToCharArray();
-            // var S = ReadLine();
-            // var S = ReadLine().ToArray();
+            for (int i = 0; i < N; i++)
+            {
+                if (A[i] == 0)
+                {
+                    WriteLine(result.ToString());
+                    ReadKey();
+                    return;
+                }
+            }
 
-            WriteLine("Hello World!");
+            for (int i = 0; i < N; i++)
+            {
+                result *= A[i];
+                if (result > (BigInteger)Pow(10, 18))
+                {
+                    result = -1;
+                    break;
+                }
+            }
+
+            WriteLine(result.ToString());
             ReadKey();
         }
     }

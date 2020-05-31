@@ -58,28 +58,6 @@ namespace Library
         }
     }
 
-    class NumberTheory
-    {
-        internal int GCD(int A, int B)
-        {
-            if (A < B)
-            {
-                BaseAlgorithm ba = new BaseAlgorithm();
-                ba.Swap(ref A, ref B);
-            }
-
-            int R = A;
-
-            while (R > 0)
-            {
-                R = A % B;
-                A = B;
-                B = R;
-            }
-            return A;
-        }
-    }
-
     internal class PriorityQueue_Asc
     {
         List<int> data;

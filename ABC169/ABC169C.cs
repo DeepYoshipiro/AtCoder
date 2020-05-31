@@ -11,19 +11,14 @@ namespace ABC169
     {
         static void Main(string[] args)
         {
-            // var N = int.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
+            var init = ReadLine().Split()
+                .Select(n => decimal.Parse(n)).ToArray();
+            var A = init[0];
+            var B = init[1];
 
-            // var N = long.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            var result = Floor(A * B);
 
-            // var S = ReadLine().ToCharArray();
-            // var S = ReadLine();
-            // var S = ReadLine().ToArray();
-
-            WriteLine("Hello World!");
+            WriteLine(result.ToString());
             ReadKey();
         }
     }
