@@ -41,16 +41,16 @@ namespace Library
         }
     }
 
-    class BaseAlgorithm
+    public class BaseAlgorithm
     {
-        internal void Swap(ref int A, ref int B)
+        public void Swap(ref int A, ref int B)
         {
             int tmp = A;
             A = B;
             B = tmp;
         }
 
-        internal void Swap(int A, int B)
+        public void Swap(int A, int B)
         {
             int tmp = A;
             A = B;
