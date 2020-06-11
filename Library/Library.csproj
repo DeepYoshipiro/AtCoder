@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Library</RootNamespace>
-    <StartupObject>Library.UnionFindTest</StartupObject>
+    <StartupObject>Library.CombinationTest</StartupObject>
   </PropertyGroup>
 
 </Project>
