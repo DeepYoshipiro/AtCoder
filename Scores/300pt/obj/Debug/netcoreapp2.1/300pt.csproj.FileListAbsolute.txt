@@ -8,3 +8,5 @@ e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.AssemblyInfoInputs.cache
 e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.AssemblyInfo.cs
 e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.dll
 e:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.pdb
+E:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.csproj.CoreCompileInputs.cache
+E:\AtCoder\Scores\300pt\obj\Debug\netcoreapp2.1\300pt.genruntimeconfig.cache

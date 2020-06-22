@@ -7,17 +7,31 @@ using static System.Math;
 
 namespace Library
 {
-    class NumberTheory
+    class ABC070C
     {
-        internal int GCD(int A, int B)
+        static void Main(string[] args)
         {
-            if (A < B)
+            var nt = new NumberTheory();
+            int N = int.Parse(ReadLine());
+            long result = long.Parse(ReadLine());
+            for (int i = 2; i <= N; i++)
             {
-                BaseAlgorithm ba = new BaseAlgorithm();
-                ba.Swap(ref A, ref B);
+                long T = long.Parse(ReadLine());
+                result = nt.LCM(result, T);
             }
 
-            int R = A;
+            WriteLine(result.ToString());
+            ReadKey();
+        }
+    }
+
+    class NumberTheory
+    {
+        internal long GCD(long M, long N)
+        {
+            long A = Max(M, N);
+            long B = Min(M, N);
+            long R = A;
 
             while (R > 0)
             {
@@ -26,6 +40,12 @@ namespace Library
                 B = R;
             }
             return A;
+        }
+
+        internal long LCM(long M, long N)
+        {
+            long d = GCD(M, N);
+            return M / d * N;
         }
 
         internal IEnumerable<long> PrimeFactorize(long N)

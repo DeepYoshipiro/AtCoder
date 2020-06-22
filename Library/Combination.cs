@@ -22,7 +22,7 @@ namespace Library
             }
             WriteLine();
 
-            var test = new long[]{100, 48, 33, 70, 56, 5, 2};
+            var test = new long[]{100, 48, 33, 70, 56, 5, 2, 1};
             foreach (long N in test)
             {
                 long rev = cb.Inv(N);
