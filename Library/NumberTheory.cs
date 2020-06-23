@@ -48,6 +48,19 @@ namespace Library
             return M / d * N;
         }
 
+        internal IEnumerable<long> Divisor(long N)
+        {
+            for (int i = 1; i * i <= N; i++)
+            {
+                if (N % i == 0)
+                {
+                    yield return i;
+                    if (i * i != N) yield return N / i;
+                }
+            }
+            yield break;
+        }
+
         internal IEnumerable<long> PrimeFactorize(long N)
         {
             long firstN = N;
