@@ -27,10 +27,8 @@ namespace Library
 
     class NumberTheory
     {
-        internal long GCD(long M, long N)
+        internal long GCD(long A, long B)
         {
-            long A = Max(M, N);
-            long B = Min(M, N);
             long R = A;
 
             while (R > 0)
@@ -42,10 +40,10 @@ namespace Library
             return A;
         }
 
-        internal long LCM(long M, long N)
+        internal long LCM(long A, long B)
         {
-            long d = GCD(M, N);
-            return M / d * N;
+            long d = GCD(A, B);
+            return A / d * B;
         }
 
         internal IEnumerable<long> Divisor(long N)
@@ -81,6 +79,63 @@ namespace Library
             {
                 yield return N;
             }
+        }
+
+        internal long extGCD(long A, long B, out long X, out long Y)
+        {
+            var curR = new List<long>();
+            var curX = new List<long>();
+            var curY = new List<long>();
+            curR.Add(A);
+            curX.Add(1);
+            curY.Add(0);
+            
+            curR.Add(B);
+            curX.Add(0);
+            curY.Add(1);
+
+            while (curR[curR.Count() - 2] % curR[curR.Count - 1] != 0)
+            {
+                var idxA = curR.Count() - 2;
+                var idxB = curR.Count() - 1;
+
+                var curA = curR[idxA];
+                var curB = curR[idxB];
+
+                curR.Add(curA % curB);
+                var Q = curA / curB;
+
+                curX.Add(curX[idxA] - Q * curX[idxB]);
+                curY.Add(curY[idxA] - Q * curY[idxB]);
+            }
+
+            X = curX.Last();
+            Y = curY.Last();
+            return curR.Last();
+        }
+
+        internal IEnumerable<long> Sieve(long N)
+        {
+            var prime = new bool[N + 1];
+            for (long i = 2; i <= N; i++)
+            {
+                prime[i] = true;
+            }
+
+            for (long i = 2; i * i <= N; i++)
+            {
+                if (!prime[i]) continue;
+                for (long j = 2 * i; j <= N; j += i)
+                {
+                    prime[j] = false;
+                }
+            }
+
+            for (long i = 2; i <= N; i++)
+            {
+                if (prime[i]) yield return i;
+            }
+            yield break;
         }
     }
 }
