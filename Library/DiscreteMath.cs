@@ -11,13 +11,13 @@ namespace Library
     {
         static void Main(string[] args)
         {
-            var nt = new NumberTheory();
+            var dm = new DiscreteMath();
             int N = int.Parse(ReadLine());
             long result = long.Parse(ReadLine());
             for (int i = 2; i <= N; i++)
             {
                 long T = long.Parse(ReadLine());
-                result = nt.LCM(result, T);
+                result = dm.LCM(result, T);
             }
 
             WriteLine(result.ToString());
@@ -25,7 +25,7 @@ namespace Library
         }
     }
 
-    class NumberTheory
+    class DiscreteMath
     {
         internal long GCD(long A, long B)
         {
@@ -137,5 +137,36 @@ namespace Library
             }
             yield break;
         }
+
+        internal long[] Combination(long N, long MOD)
+        {
+            var inverse = new long[N + 1];
+            inverse[0] = 0;
+            for (long i = 1; i <= N; i++)
+            {
+                inverse[i] = Inverse(i, MOD);
+            }
+
+            var comb = new long[N + 1];
+            comb[0] = 1;
+            for (long i = 1; i <= N; i++)
+            {
+                comb[i] = (comb[i - 1] * (N + 1 - i)) % MOD;
+                comb[i] *= inverse[i];
+                comb[i] %= MOD;
+                if (comb[i] < 0) comb[i] += MOD;
+            }
+            return comb;
+        }
+
+        private long Inverse(long A, long MOD)
+        {
+            long X = 0;
+            long Y = 0;
+            extGCD(A, MOD, out X, out Y);
+            if (X < 0) X += MOD;
+            return X;
+        }
+
     }
 }
