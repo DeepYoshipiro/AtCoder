@@ -7,22 +7,55 @@ using static System.Math;
 
 namespace Library
 {
-    class ABC070C
+    // class ABC070C
+    // {
+    //     static void Main(string[] args)
+    //     {
+    //         var dm = new DiscreteMath();
+    //         int N = int.Parse(ReadLine());
+    //         long result = long.Parse(ReadLine());
+    //         for (int i = 2; i <= N; i++)
+    //         {
+    //             long T = long.Parse(ReadLine());
+    //             result = dm.LCM(result, T);
+    //         }
+
+    //         WriteLine(result.ToString());
+    //         ReadKey();
+    //     }
+    // }
+    // class GCDverify
+    // {
+    //     static void Main(string[] args)
+    //     {
+    //         var dm = new DiscreteMath();
+    //         long N = 180;
+    //         var result = dm.Divisor(N);
+    //         foreach (long d in result)
+    //         {
+    //             WriteLine(d.ToString());
+    //         }
+    //         WriteLine();
+    //         WriteLine(result.Count().ToString());
+    //         ReadKey();
+    //     }
+    // }
+
+    class DivisorVerify
     {
         static void Main(string[] args)
         {
             var dm = new DiscreteMath();
-            int N = int.Parse(ReadLine());
-            long result = long.Parse(ReadLine());
-            for (int i = 2; i <= N; i++)
+            long N = 400;
+            long[] result = new long[N + 1];
+            for (int i = 1; i <= N; i++)
             {
-                long T = long.Parse(ReadLine());
-                result = dm.LCM(result, T);
+                result[i] = dm.Divisor(i).Count();
+                WriteLine("{0}: {1}", i, result[i].ToString());
             }
-
-            WriteLine(result.ToString());
             ReadKey();
         }
+
     }
 
     class DiscreteMath

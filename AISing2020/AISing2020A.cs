@@ -11,19 +11,15 @@ namespace AISing2020
     {
         static void Main(string[] args)
         {
-            // var N = int.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
+            var init = ReadLine().Split()
+                .Select(n => int.Parse(n)).ToArray();
+            var L = init[0];
+            var R = init[1];
+            var d = init[2];
 
-            // var N = long.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
+            var result = (R / d) - ((L - 1) / d);
 
-            // var S = ReadLine().ToCharArray();
-            // var S = ReadLine();
-            // var S = ReadLine().ToArray();
-
-            WriteLine("Hello World!");
+            WriteLine(result.ToString());
             ReadKey();
         }
     }

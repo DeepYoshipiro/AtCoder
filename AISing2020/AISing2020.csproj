@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>AISing2020.AISing2020A</StartupObject>
+    <StartupObject>AISing2020.AISing2020C</StartupObject>
   </PropertyGroup>
 
 </Project>
