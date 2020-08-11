@@ -9,3 +9,5 @@ e:\AtCoder\ABC157\obj\Debug\netcoreapp3.1\ABC157.AssemblyInfoInputs.cache
 e:\AtCoder\ABC157\obj\Debug\netcoreapp3.1\ABC157.AssemblyInfo.cs
 e:\AtCoder\ABC157\obj\Debug\netcoreapp3.1\ABC157.dll
 e:\AtCoder\ABC157\obj\Debug\netcoreapp3.1\ABC157.pdb
+E:\AtCoder\ABC157\obj\Debug\netcoreapp3.1\ABC157.csproj.CoreCompileInputs.cache
+E:\AtCoder\ABC157\obj\Debug\netcoreapp3.1\ABC157.genruntimeconfig.cache
