@@ -11,44 +11,35 @@ namespace _300pt
     {
         static void Main(string[] args)
         {
-            char[] includeDigit = { '7', '5', '3' };
             int N = int.Parse(ReadLine());
 
-            List<string> satisfyNum = new List<String> { "357", "375", "537", "573", "735", "753" };
-            for (int i = 3; i <= Log(N, 10); i++)
-            {
-                HashSet<string> addNum = new HashSet<string>();
-                foreach (string s in satisfyNum) {
-                    if (s.Length == i) {
-                        for (int j = 0; j < includeDigit.Length; j++) { 
-                            string checkNum1 = s + includeDigit[j];
-                            if (checkNum1.Contains(includeDigit[0])
-                                && checkNum1.Contains(includeDigit[1])
-                                && checkNum1.Contains(includeDigit[2]))
-                                addNum.Add(checkNum1);
-
-                            string checkNum2 = includeDigit[j] + s;
-                            if (checkNum2.Contains(includeDigit[0])
-                                && checkNum2.Contains(includeDigit[1])
-                                && checkNum2.Contains(includeDigit[2]))
-                                addNum.Add(checkNum2);
-                        }
-                    }
-                }
-                
-                foreach (string u in addNum)
-                {
-                    satisfyNum.Add(u);
-                }
-            }
-
-            int result = 0;
-            foreach (string t in satisfyNum) {
-                if (int.Parse(t) <= N) result++;
-            }
+            int result = dfs("", N, false, false, false);
 
             WriteLine(result.ToString());
             ReadKey();
+        }
+
+        static int dfs(string curNumLiteral, int limit
+                        , bool exist3, bool exist5, bool exist7)
+        {
+            var curNumChar = curNumLiteral.ToCharArray();
+            int result = 0;
+            if (curNumChar.Count() >= 10) return 0;
+            int curNum = 0;
+            int pow = 1;
+            for (int i = curNumChar.Count() - 1; i >= 0; i--)
+            {
+                curNum += (curNumChar[i] - '0') * pow;
+                pow *= 10;
+            }
+            if (curNum > limit) return 0;
+            if (exist3 && exist5 && exist7) result++;
+
+            result += dfs(curNumLiteral + "3", limit, true, exist5, exist7);
+            result += dfs(curNumLiteral + "5", limit, exist3, true, exist7);
+            result += dfs(curNumLiteral + "7", limit, exist3, exist5, true);
+            
+            return result;
         }
     }
 }
