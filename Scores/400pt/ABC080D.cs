@@ -11,58 +11,49 @@ namespace _400pt
     {
         static void Main(string[] args)
         {
-            int[] init = ReadLine().Split()
+            int END_BROADCAST_TIME = 2 * 100000;
+            var init = ReadLine().Split()
+                .Select(n => int.Parse(n)).ToArray();
+            var N = init[0];
+            var C = init[1];
+
+            var reserve = new int[C + 1][];
+            for (int j = 0; j <= C; j++)
+            {
+                reserve[j] = new int[END_BROADCAST_TIME + 1];
+            }
+
+            for (int i = 0; i < N; i++)
+            {
+                var que = ReadLine().Split()
                     .Select(n => int.Parse(n)).ToArray();
-            int H = init[0];
-            int W = init[1];
+                var s = que[0] * 2 - 1;
+                var t = que[1] * 2;
+                var ch = que[2];
 
-            int N = int.Parse(ReadLine());
-
-            int[] a = (new int[]{0})
-                    .Concat(ReadLine().Split()
-                        .Select(n => int.Parse(n))).ToArray();
-            for (int i = 1; i <= N; i++)
-            {
-                a[i] += a[i - 1];
+                reserve[ch][s]++;
+                reserve[ch][t]--;
             }
 
-            int[][] result = new int[H][];
-            for (int i = 0; i < H; i++)
+            for (int ch = 1; ch <= C; ch++)
             {
-                result[i] = new int[W];
-            }
-
-            int colored = 0;
-            int curH = 0;
-            int curW = 0;
-            int curNum = 1;
-            int curOri = 1;
-            while (++colored <= H * W)
-            {
-                if (colored > a[curNum]) curNum++;
-                result[curH][curW] = curNum;
-                if ((curOri == 1 && curW == W - 1)
-                    || (curOri == -1 && curW == 0))
+                for (int i = 2; i <= END_BROADCAST_TIME; i++)
                 {
-                    curH++;
-                    curOri *= -1;
-                }
-                else
-                {
-                    curW += curOri;
+                    reserve[ch][i] += reserve[ch][i - 1];
                 }
             }
 
-            for (int h = 0; h < H; h++)
+            int result = 0;
+            for (int i = 1; i <= END_BROADCAST_TIME; i++)
             {
-                StringBuilder row = new StringBuilder();
-                for (int w = 0; w < W; w++)
+                for (int ch = 1; ch <= C; ch++)
                 {
-                    row.Append(result[h][w].ToString());
-                    row.Append(" ");
+                    reserve[0][i] += Sign(reserve[ch][i]);
                 }
-                WriteLine(row.ToString().PadRight(' '));
+                if (reserve[0][i] > result) result = reserve[0][i];
             }
+
+            WriteLine(result.ToString());
             ReadKey();
         }
     }

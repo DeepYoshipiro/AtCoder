@@ -1,73 +1,89 @@
-﻿using System;
-using static System.Console;
+﻿// Solution: bit-search
+using System;
 using System.Linq;
+using System.Collections.Generic;
+using System.Text;
+using static System.Console;
+using static System.Math;
 
 namespace _300pt
 {
     class ABC104C
     {
-        private static int Difficulty;
-        private static int GrandScore;
-        private static int[] Problem;
-        private static int[] CompleteBonus;
-
-        private static int[] SummedUpAllScores;
-
-        private static int MinSolve;
-
         static void Main(string[] args)
         {
-            //input
-            int[] input = ReadLine().Split(' ')
+            var init = ReadLine().Split(' ')
                 .Select(n => int.Parse(n)).ToArray();
-            Difficulty = input[0];
-            GrandScore = input[1];
+            var D = init[0];
+            var G = init[1];
 
-            Problem = new int[Difficulty + 1];
-            CompleteBonus = new int[Difficulty + 1];
-            MinSolve = 0;
-            SummedUpAllScores = new int[Difficulty + 1];
+            var p = new int[D + 1];
+            var c = new int[D + 1];
 
-            SummedUpAllScores[0] = 0;
-
-            for (int i = 1; i <= Difficulty; i++)
+            for (int i = 1; i <= D; i++)
             {
-                SummedUpAllScores[i] = SummedUpAllScores[i - 1];
-                input = ReadLine().Split(' ')
+                var prob = ReadLine().Split(' ')
                     .Select(n => int.Parse(n)).ToArray();
-                Problem[i] = input[0];
-                CompleteBonus[i] = input[1];
-                MinSolve += Problem[i];
-                SummedUpAllScores[i] += i * 100 * Problem[i] + CompleteBonus[i];
+                p[i] = prob[0];
+                c[i] = prob[1];
             }
 
-            //calculate
-            Planning(Difficulty, 0, 0);
+            int result = p.Sum();
+            for (int i = 0; i < 1<<D; i++)
+            {
+                int curPoint = 0;
+                int solvedProblem = 0;
+                var getComp = new bool[D + 1];
+                int pbLvl;
+                for (int bit = 0; bit < D; bit++)
+                {
+                    if ((i & 1<<bit) > 0)
+                    {
+                        pbLvl = bit + 1;
+                        getComp[pbLvl] = true;
+                        curPoint += p[pbLvl] * pbLvl * 100 + c[pbLvl];
+                        solvedProblem += p[pbLvl];
+                    }
+                }
+                if (curPoint >= G)
+                {
+                    if (solvedProblem < result)
+                    {
+                        result = solvedProblem;
+                    }
+                    continue;
+                }
 
-            //output;
-            WriteLine(MinSolve.ToString());
+                for (pbLvl = D; pbLvl >= 1; pbLvl--)
+                {
+                    var shotage = G - curPoint;
+                    if (!getComp[pbLvl])
+                    {
+                        if (shotage <= (p[pbLvl] - 1) * pbLvl * 100)
+                        {
+                            int solve = ((shotage + (pbLvl - 1) * 100)) / (pbLvl * 100);
+                            solvedProblem += solve;
+                            curPoint += solve * pbLvl * 100;
+                            break;
+                        }
+                        else
+                        {
+                            curPoint += (p[pbLvl] - 1) * pbLvl * 100;
+                            solvedProblem += p[pbLvl] - 1;
+                        }
+                    }
+                }
+                if (curPoint >= G)
+                {
+                    if (solvedProblem < result)
+                    {
+                        result = solvedProblem;
+                    }
+                }
+            }
+
+            WriteLine(result.ToString());
             ReadKey();
-        }
-
-        internal static void Planning(int curLvl, int curScore, int curSolved)
-        {
-            if (curScore >= GrandScore)
-            {
-                if (curSolved < MinSolve) MinSolve = curSolved;
-                return;
-            }
-
-            if (curScore + SummedUpAllScores[curLvl] < GrandScore) return;
-
-            int oneSolveScore = curLvl * 100;
-            Planning(curLvl - 1, curScore + oneSolveScore * Problem[curLvl] + CompleteBonus[curLvl]
-                , curSolved + Problem[curLvl]);
-
-            for (int i = Problem[curLvl] - 1; i > 0; i--)
-            {
-                Planning(curLvl - 1, curScore + oneSolveScore * i, curSolved + i);
-            }
-            return;
         }
     }
 }
