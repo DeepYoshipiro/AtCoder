@@ -8,3 +8,5 @@ E:\AtCoder\ABC14n\bin\Debug\netcoreapp2.1\ABC14n.dll
 E:\AtCoder\ABC14n\bin\Debug\netcoreapp2.1\ABC14n.pdb
 E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.dll
 E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.pdb
+E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.csproj.CoreCompileInputs.cache
+E:\AtCoder\ABC14n\obj\Debug\netcoreapp2.1\ABC14n.genruntimeconfig.cache
