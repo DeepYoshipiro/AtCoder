@@ -29,38 +29,41 @@ namespace _400pt
 
             long result = (X.Max() - X.Min()) * (Y.Max() - Y.Min());
 
-            Array.Sort(X, Y);
-            for (int j = K; j <= N; j++)
+            var sortX = X.OrderBy(n => n).ToArray();
+            var sortY = Y.OrderBy(n => n).ToArray();
+
+            for (int i1 = 0; i1 < N; i1++)
             {
-                for (int i = 0; i < N - j; i++)
+                for (int i2 = i1 + 1; i2 < N; i2++)
                 {
-                    var cutX = X[i + j - 1] - X[i];
-                    var searchY = new long[j];
-                    Array.Copy(Y, i, searchY, 0, j);
-                    var cutY = searchY.Max() - searchY.Min();
-                    if (cutX * cutY < result)
+                    for (int j1 = 0; j1 < N; j1++)
                     {
-                        result = cutX * cutY;
+                        for (int j2 = j1 + 1; j2 < N; j2++)
+                        {
+                            long minX = Min(sortX[i1], sortX[i2]);
+                            long maxX = Max(sortX[i1], sortX[i2]);
+
+                            long minY = Min(sortY[j1], sortY[j2]);
+                            long maxY = Max(sortY[j1], sortY[j2]);
+
+                            long measure = (maxX - minX) * (maxY - minY);
+                            if (measure > result) continue;
+
+                            int include = 0;
+                            for (int k = 0; k < N; k++)
+                            {
+                                if (X[k] < minX || X[k] > maxX) continue;
+                                if (Y[k] < minY || Y[k] > maxY) continue;
+                                include++;
+                            }
+                            if (include >= K)
+                            {
+                                result = measure;
+                            }
+                        }                    
                     }
                 }
             }
-
-            Array.Sort(Y, X);
-            for (int j = K; j <= N; j++)
-            {
-                for (int i = 0; i < N - j; i++)
-                {
-                    var cutY = Y[i + j - 1] - Y[i];
-                    var searchX = new long[j];
-                    Array.Copy(X, i, searchX, 0, j);
-                    var cutX = searchX.Max() - searchX.Min();
-                    if (cutX * cutY < result)
-                    {
-                        result = cutX * cutY;
-                    }
-                }
-            }
-
             WriteLine(result.ToString());
             ReadKey();
         }
