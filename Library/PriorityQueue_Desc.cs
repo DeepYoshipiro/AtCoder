@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using static System.Console;
 using static System.Math;
 
-namespace ABC141
+namespace Library
 {
     class ABC141Drev
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Solution : bit Search
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,19 @@ namespace ABC147
     {
         static void Main(string[] args)
         {
-            int N = int.Parse(ReadLine());
-            Dictionary<int, int>[] testimony = new Dictionary<int, int>[N + 1];
+            var N = int.Parse(ReadLine());
+            var testimony = new Dictionary<int, int>[N + 1]
+                .Select(v => new Dictionary<int, int>())
+                .ToArray();
             for (int i = 1; i <= N; i++)
             {
-                testimony[i] = new Dictionary<int, int>();
                 int A = int.Parse(ReadLine());
                 for (int j = 1; j <= A; j++)
                 {
-                    int[] said = ReadLine().Split()
+                    var said = ReadLine().Split()
                         .Select(n => int.Parse(n)).ToArray();
-                    int x = said[0];
-                    int y = said[1];
+                    var x = said[0];
+                    var y = said[1];
                     testimony[i].Add(x, y);
                 }
             }
