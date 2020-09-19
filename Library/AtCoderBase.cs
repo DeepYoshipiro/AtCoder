@@ -14,6 +14,8 @@ namespace Library
             // var N = int.Parse(ReadLine());
             // var init = ReadLine().Split()
             //     .Select(n => int.Parse(n)).ToArray();
+            // var N = init[0];
+            // var M = init[1];
 
             // var N = long.Parse(ReadLine());
             // var init = ReadLine().Split()
