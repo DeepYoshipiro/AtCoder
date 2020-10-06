@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>_500pt</RootNamespace>
-    <StartupObject>_500pt.ABC133E</StartupObject>
+    <StartupObject>_500pt.ABC129E</StartupObject>
   </PropertyGroup>
 
 </Project>

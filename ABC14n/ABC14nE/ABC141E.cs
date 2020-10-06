@@ -1,6 +1,65 @@
-﻿using System;
+﻿// using System;
+// using System.Linq;
+// using System.Collections.Generic;
+// using System.Text;
+// using static System.Console;
+// using static System.Math;
+ 
+// namespace ABC141
+// {
+//     class ABC141E
+//     {
+//         static void Main(string[] args)
+//         {
+//             var N = int.Parse(ReadLine());
+//             string S = ReadLine();
+//             var Letter = new List<int>['z' - 'a' + 1]
+//                 .Select(v => new List<int>()).ToArray();
+ 
+ 
+//             for (int i = 0; i < N; i++) 
+//             {
+//                 Letter[char.Parse(S.Substring(i, 1)) - 'a'].Add(i);
+//             }
+ 
+//             int len = 0;
+//             for (int l = 0; l < 26; l++)
+//             {
+//                 if (Letter[l].Count() >= 2)
+//                 {
+//                     len = 1;
+//                     break;
+//                 } 
+//             }
+ 
+//             for (int l = 0; l < 26; l++)
+//             {
+//                 if (Letter[l].Count() <= 1) continue;
+//                 for (int i = 0; i < Letter[l].Count() - 1; i++)
+//                 {
+//                     for (int j = i + 1; j < Letter[l].Count(); j++)
+//                     {
+//                         var l1 = Letter[l][i];
+//                         var l2 = Letter[l][j];
+ 
+//                         while (l2 + len < N && l1 + len < l2)
+//                         {
+//                             if (S.Substring(l1, len + 1) != S.Substring(l2, len + 1)) break;
+//                             len++;
+//                         }
+//                     }
+//                 }
+//             }
+ 
+//             WriteLine(len.ToString());
+//             ReadKey();
+//         }
+//     }
+// }
+using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 using static System.Console;
 using static System.Math;
 
@@ -10,41 +69,48 @@ namespace ABC141
     {
         static void Main(string[] args)
         {
-            int N = int.Parse(ReadLine());
+            var N = int.Parse(ReadLine());
             string S = ReadLine();
-            char[] alphaBet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+            var Letter = new List<int>['z' - 'a' + 1]
+                .Select(v => new List<int>()).ToArray();
 
-            for (int i = 0; i < alphaBet.Length; i++) {
-                int p = S.Count(s => s == alphaBet[i]);
+
+            for (int i = 0; i < N; i++) 
+            {
+                Letter[char.Parse(S.Substring(i, 1)) - 'a'].Add(i);
             }
-            /*
 
-             int N = init[0];    //参加者数
-             int K = init[1];    //初期持ち点
-             int Q = init[2];    //ラウンド全体の正解数
+            int len = 0;
+            for (int l = 0; l < 26; l++)
+            {
+                if (Letter[l].Count() >= 2)
+                {
+                    len = 1;
+                    break;
+                } 
+            }
 
-             int[] P = new int[N + 1];
-             //ここでは、参加者の配列は、常に1からはじめます。
-             for (int i = 1; i <= N; i++) {  
-                 //最初に全員、初期持ち点から、
-                 //ラウンド全体の正解数減点しちゃいます。
-                 P[i] = K - Q;
-             }
+            for (int l = 0; l < 26; l++)
+            {
+                if (Letter[l].Count() <= 1) continue;
+                for (int i = 0; i < Letter[l].Count() - 1; i++)
+                {
+                    for (int j = i + 1; j < Letter[l].Count(); j++)
+                    {
+                        var l1 = Letter[l][i];
+                        var l2 = Letter[l][j];
 
-             //正解のスコアシートの添え字はゼロからスタート
-             for (int j = 0; j < Q; j++) {
-                 int r = int.Parse(ReadLine());
-                 //正解した人だけ、ポイント復帰
-                 P[r]++;
-             }
+                        while (l2 + len < N && l1 + len < l2)
+                        {
+                            if (S.Substring(l1, len + 1) != S.Substring(l2, len + 1)) break;
+                            len++;
+                        }
+                    }
+                }
+            }
 
-             //勝ち抜けたかな？
-             for (int i = 1; i <= N; i++) {
-                 WriteLine(P[i] > 0 ? "Yes" : "No");
-             }
-
-             ReadKey();
-         }*/
+            WriteLine(len.ToString());
+            ReadKey();
         }
     }
 }
