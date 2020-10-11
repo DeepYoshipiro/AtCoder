@@ -9,3 +9,5 @@ E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.AssemblyInfoInputs.cache
 E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.AssemblyInfo.cs
 E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.dll
 E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.pdb
+E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.csproj.CoreCompileInputs.cache
+E:\AtCoder\AGC044\obj\Debug\netcoreapp3.1\AGC044.genruntimeconfig.cache
