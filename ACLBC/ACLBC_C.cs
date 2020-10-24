@@ -16,7 +16,7 @@ namespace ACLBC
             var N = init[0];
             var M = init[1];
 
-            var uf = new UnionFind(N + 1);
+            var uf = new Union_Find(N);
             for (int j = 1; j <= M; j++)
             {
                 var way = ReadLine().Split()
@@ -46,41 +46,36 @@ namespace ACLBC
             WriteLine(nonConnected.ToString());
             ReadKey();
         }
-    }
 
-    class UnionFind
-    {
-        internal int[] Parent{get;}
-        int[] Rank;
-
-        internal UnionFind(int N)
+        internal class Union_Find
         {
-            Parent = new int[N];
-            Rank = new int[N];
-            for (int i = 0; i < N; i++)
+            internal int[] Parent;
+            internal Union_Find(int N)
             {
-                Parent[i] = i;
+                Parent = new int[N + 1];
+                for (int i = 1; i <= N; i++)
+                {
+                    Parent[i] = i;
+                }
             }
-        }
 
-        internal void Union(int X, int Y)
-        {
-            int rootX = Root(X);
-            int rootY = Root(Y);
-            int rank = Max(Rank[rootX], Rank[rootY]);
-            Parent[X] = Parent[rootX];
-            Parent[Y] = Parent[rootX];
-            Rank[rootX] = rank++;
-        }
-
-        internal int Root(int N)
-        {
-            if (Parent[N] == N)
+            internal void Union(int x, int y)
             {
-                return N;
+                int p = Root(x);
+                int q = Root(y);
+
+                if (p == q) return;
+                Parent[q] = p;
+                Parent[y] = p;
+
+                return;  
             }
-            int root = Root(Parent[N]);
-            return root;
+
+            internal int Root(int x)
+            {
+                if (x == Parent[x]) return x;
+                return Parent[x] = Root(Parent[x]);
+            }
         }
     }
 }
