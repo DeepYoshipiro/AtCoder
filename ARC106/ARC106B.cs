@@ -23,12 +23,6 @@ namespace ARC106
                 .Concat(ReadLine().Split()
                     .Select(n => long.Parse(n))).ToArray();
 
-            var way = new List<int>[N + 1];
-            for (int i = 1; i <= N; i++)
-            {
-                way[i] = new List<int>();
-            } 
-
             var uf = new Union_Find(N);
             for (int j = 0; j < M; j++)
             {
@@ -37,9 +31,6 @@ namespace ARC106
                 var x = to[0];
                 var y = to[1];
                 
-                way[x].Add(y);
-                way[y].Add(x);
-
                 uf.Union(x, y);
             }
 
@@ -72,6 +63,8 @@ namespace ARC106
             internal int[] Parent;
             internal Union_Find(int N)
             {
+                // Parent = new int[N];     // for 0-indexed
+                // for (int i = 0; i < N; i++)
                 Parent = new int[N + 1];
                 for (int i = 1; i <= N; i++)
                 {

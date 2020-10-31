@@ -11,13 +11,6 @@ namespace Library
     {
         static void Main(string[] args)
         {
-            // int[] parent = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            // var uf = new Union_Find(10);
-            
-            // uf.Union(6, 2);
-            // uf.Union(4, 8);
-            // uf.Union(9, 2);
-            
             var init = ReadLine().Split()
                 .Select(n => int.Parse(n)).ToArray();
             var N = init[0];
@@ -60,7 +53,7 @@ namespace Library
             {
                 // Parent = new int[N + 1];
                 // for (int i = 1; i <= N; i++)
-                Parent = new int[N];
+                Parent = new int[N];    // for 0-indexed
                 for (int i = 0; i < N; i++)
                 {
                     Parent[i] = i;
