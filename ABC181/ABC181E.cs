@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using static System.Console;
 using static System.Math;
 
-namespace Library
+namespace ABC181
 {
-    class Template
+    class ABC181E
     {
         static void Main(string[] args)
         {
