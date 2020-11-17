@@ -5,9 +5,9 @@ using System.Text;
 using static System.Console;
 using static System.Math;
 
-namespace Library
+namespace ABC182
 {
-    class Template
+    class ABC182E
     {
         static void Main(string[] args)
         {
