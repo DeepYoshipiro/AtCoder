@@ -48,7 +48,7 @@ namespace Library
             var dm = new DiscreteMath();
             long N = 400;
             long[] result = new long[N + 1];
-            for (int i = 1; i <= N; i++)
+            for (long i = 1; i <= N; i++)
             {
                 result[i] = dm.Divisor(i).Count();
                 WriteLine("{0}: {1}", i, result[i].ToString());
@@ -81,7 +81,7 @@ namespace Library
 
         internal IEnumerable<long> Divisor(long N)
         {
-            for (int i = 1; i * i <= N; i++)
+            for (long i = 1; i * i <= N; i++)
             {
                 if (N % i == 0)
                 {
