@@ -96,7 +96,7 @@ namespace Library
         {
             long firstN = N;
             long div = 2;
-            while (N >= 1 && div * div < firstN)
+            while (N >= 1 && div * div <= firstN)
             {
                 if (N % div == 0)
                 {
@@ -149,11 +149,7 @@ namespace Library
 
         internal IEnumerable<long> Sieve(long N)
         {
-            var prime = new bool[N + 1];
-            for (long i = 2; i <= N; i++)
-            {
-                prime[i] = true;
-            }
+            var prime = new bool[N + 1].Select(v => true).ToArray();
 
             for (long i = 2; i * i <= N; i++)
             {
