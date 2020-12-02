@@ -16,52 +16,56 @@ namespace ABC183
             var H = init[0];
             var W = init[1];
 
-            var S = new char[H][];
+            var S = new char[H + 1][];
             
-            long result = 0;
+            var dpWay = new long[H + 1][];
             long mod = (long)Pow(10, 9) + 7;
 
-            var dpHorizon = new long[H][];
-            var dpVertical = new long[H][];
-            var dpCross = new long[H][];
+            var dpSumH = new long[H + 1][];
+            var dpSumW = new long[H + 1][];
+            var dpSumC = new long[H + 1][];
 
-            // 読み込み ＆ よこ
-            bool stone = false;
-            for (int i = 0; i < H; i++)
+            dpWay[0] = new long[W + 1];
+            dpSumH[0] = new long[W + 1];
+            dpSumW[0] = new long[W + 1];
+            dpSumC[0] = new long[W + 1];
+
+            for (int i = 1; i <= H; i++)
             {
-                S[i] = ReadLine().ToCharArray();
-                dpHorizon[i] = new long[W];
-                dpVertical[i] = new long[W];
-                dpCross[i] = new long[W];
-                stone = false;
-                /*
-                long con = 0;
-                if (S[i][j] )
-                for (int j = 1; j < W; j++)
-                {
-                    if (!stone && S[i][j] == '.')
-                    {
-                        dp[i][j] = 
-                    }
-                }
-                */
+                S[i] = (new char[]{' '}).Concat(ReadLine()).ToArray();
 
+                dpWay[i] = new long[W + 1];
+                dpSumH[i] = new long[W + 1];
+                dpSumW[i] = new long[W + 1];
+                dpSumC[i] = new long[W + 1];
+
+                for (int j = 1; j <= W; j++)
+                {
+                    if (S[i][j] == '#')
+                    {
+                        dpSumH[i][j] = 0;
+                        dpSumW[i][j] = 0;
+                        dpSumC[i][j] = 0;
+                        dpWay[i][j] = 0;
+                        continue;
+                    }
+
+                    dpWay[i][j] = (dpSumH[i - 1][j]
+                                    + dpSumW[i][j - 1]
+                                    + dpSumC[i - 1][j - 1]) % mod;
+
+                    if (i == 1 && j == 1)
+                    {
+                        dpWay[i][j] = 1;
+                    }
+
+                    dpSumH[i][j] = (dpSumH[i - 1][j] + dpWay[i][j]) % mod;
+                    dpSumW[i][j] = (dpSumW[i][j - 1] + dpWay[i][j]) % mod;
+                    dpSumC[i][j] = (dpSumC[i - 1][j - 1] + dpWay[i][j]) % mod;
+                }
             }
 
-            // よこ
-            // たて
-
-            // ななめ（右下方向のみ）
-            // var N = long.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
-            // var N = init[0];
-            // var M = init[1];
-
-            // var S = ReadLine();
-            // var S = ReadLine().ToArray();
-
-            WriteLine("Welcome to AtCoder!!");
+            WriteLine(dpWay[H][W].ToString());
             ReadKey();
         }
     }
