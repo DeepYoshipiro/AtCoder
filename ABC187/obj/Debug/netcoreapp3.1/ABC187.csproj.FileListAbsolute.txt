@@ -1,0 +1,13 @@
+E:\AtCoder\ABC187\bin\Debug\netcoreapp3.1\ABC187.exe
+E:\AtCoder\ABC187\bin\Debug\netcoreapp3.1\ABC187.deps.json
+E:\AtCoder\ABC187\bin\Debug\netcoreapp3.1\ABC187.runtimeconfig.json
+E:\AtCoder\ABC187\bin\Debug\netcoreapp3.1\ABC187.runtimeconfig.dev.json
+E:\AtCoder\ABC187\bin\Debug\netcoreapp3.1\ABC187.dll
+E:\AtCoder\ABC187\bin\Debug\netcoreapp3.1\ABC187.pdb
+E:\AtCoder\ABC187\obj\Debug\netcoreapp3.1\ABC187.csprojAssemblyReference.cache
+E:\AtCoder\ABC187\obj\Debug\netcoreapp3.1\ABC187.AssemblyInfoInputs.cache
+E:\AtCoder\ABC187\obj\Debug\netcoreapp3.1\ABC187.AssemblyInfo.cs
+E:\AtCoder\ABC187\obj\Debug\netcoreapp3.1\ABC187.csproj.CoreCompileInputs.cache
+E:\AtCoder\ABC187\obj\Debug\netcoreapp3.1\ABC187.dll
+E:\AtCoder\ABC187\obj\Debug\netcoreapp3.1\ABC187.pdb
+E:\AtCoder\ABC187\obj\Debug\netcoreapp3.1\ABC187.genruntimeconfig.cache
