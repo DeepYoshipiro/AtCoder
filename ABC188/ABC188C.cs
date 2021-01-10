@@ -11,23 +11,40 @@ namespace ABC188
     {
         static void Main(string[] args)
         {
-            // var N = int.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
-            // var N = init[0];
-            // var M = init[1];
+            var N = int.Parse(ReadLine());
 
-            // var N = long.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
-            // var N = init[0];
-            // var M = init[1];
+            var A = ReadLine().Split()
+                .Select(n => int.Parse(n)).ToList();
+            
+            int competitor = 1;
+            for (int j = 0; j < N; j++)
+            {
+                competitor *= 2;
+            }
 
-            // var S = ReadLine().ToCharArray();
-            // var S = ReadLine();
-            // var S = ReadLine().ToArray();
+            int westWinnerID = 0;
+            int westMax = 0;
+            for (int i = 0; i < competitor / 2; i++)
+            {
+                if (A[i] > westMax)
+                {
+                    westWinnerID = i + 1;
+                    westMax = A[i];
+                }
+            }
 
-            WriteLine("Welcome to AtCoder!!");
+            int eastMax = 0;
+            int eastWinnerID = 0;
+            for (int i = competitor / 2; i < competitor; i++)
+            {
+                if (A[i] > eastMax)
+                {
+                    eastWinnerID = i + 1;
+                    eastMax = A[i];
+                }
+            }
+
+            WriteLine(westMax < eastMax ? westWinnerID : eastWinnerID);
             ReadKey();
         }
     }

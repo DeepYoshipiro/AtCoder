@@ -11,23 +11,20 @@ namespace ABC188
     {
         static void Main(string[] args)
         {
-            // var N = int.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => int.Parse(n)).ToArray();
-            // var N = init[0];
-            // var M = init[1];
+            var N = int.Parse(ReadLine());
 
-            // var N = long.Parse(ReadLine());
-            // var init = ReadLine().Split()
-            //     .Select(n => long.Parse(n)).ToArray();
-            // var N = init[0];
-            // var M = init[1];
+            var A = ReadLine().Split()
+                .Select(n => long.Parse(n)).ToArray();
+            var B = ReadLine().Split()
+                .Select(n => long.Parse(n)).ToArray();
 
-            // var S = ReadLine().ToCharArray();
-            // var S = ReadLine();
-            // var S = ReadLine().ToArray();
+            long result = 0;
+            for (int i = 0; i < N; i++)
+            {
+                result += A[i] * B[i];
+            }
 
-            WriteLine("Welcome to AtCoder!!");
+            WriteLine(result == 0 ? "Yes" : "No");
             ReadKey();
         }
     }
