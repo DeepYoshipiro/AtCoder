@@ -1,3 +1,4 @@
+// Solution : BFS with new Class
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,8 @@ namespace _400pt
         {
             int N = int.Parse(ReadLine());
 
-            List<Node>[] node = new List<Node>[N + 1];
-            for (int i = 0; i <= N; i++)
-            {
-                node[i] = new List<Node>();
-            }
+            var node = new List<Node>[N + 1]
+                .Select(v => new List<Node>()).ToList();
 
             for (int i = 0; i < N - 1; i++)
             {
@@ -36,11 +34,8 @@ namespace _400pt
             int Q = que[0];
             int K = que[1];
 
-            long[] distance = new long[N + 1];
-            for (int i = 0; i <= N; i++)
-            {
-                distance[i] = long.MaxValue;
-            }
+            long[] distance = new long[N + 1]
+                .Select(v => long.MaxValue).ToArray();
 
             bool[] arrived = new bool[N + 1];
             Queue<int> search = new Queue<int>();

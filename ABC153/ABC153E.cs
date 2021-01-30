@@ -1,3 +1,4 @@
+// Solution : DP
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,22 +17,18 @@ namespace ABC153
             int H = init[0];
             int N = init[1];
 
-            int[] A = new int[N];
-            int[] B = new int[N];
+            var A = new int[N];
+            var B = new int[N];
             for (int i = 0; i < N; i++)
             {
                 int[] spellBook = ReadLine().Split(' ')
-                .Select(n => int.Parse(n)).ToArray();
+                    .Select(n => int.Parse(n)).ToArray();
                 A[i] = spellBook[0];
                 B[i] = spellBook[1];
-                double efficiently = (double)A[i] / (double)B[i];
             }
 
-            long[] dpMinMP = new long[H + 1];
-            for (int i = 0; i < H; i++)
-            {
-                dpMinMP[i] = long.MaxValue;
-            }
+            var dpMinMP = new long[H + 1]
+                    .Select(v => long.MaxValue).ToArray();
             dpMinMP[H] = 0;
 
             for (int i = H; i > 0; i--)

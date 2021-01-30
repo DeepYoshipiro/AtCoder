@@ -1,20 +1,20 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v2.1",
+    "name": ".NETCoreApp,Version=v3.1",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v2.1": {
-      "ABC153/1.0.0": {
+    ".NETCoreApp,Version=v3.1": {
+      "ABC189/1.0.0": {
         "runtime": {
-          "ABC153.dll": {}
+          "ABC189.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "ABC153/1.0.0": {
+    "ABC189/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
