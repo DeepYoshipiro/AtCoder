@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Solution : bit Search
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
@@ -38,7 +39,7 @@ namespace ABC190
 
                 for (int j = 0; j < K; j++)
                 {
-                    if ((bit & (1<<j)) == 0)
+                    if ((bit>>j & 1) == 0)
                     {
                         existBall[choice[j][0]] = true;
                     }
