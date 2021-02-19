@@ -8,3 +8,5 @@ e:\AtCoder\Classics\CyanProblems\obj\Debug\netcoreapp2.1\CyanProblems.AssemblyIn
 e:\AtCoder\Classics\CyanProblems\obj\Debug\netcoreapp2.1\CyanProblems.AssemblyInfo.cs
 e:\AtCoder\Classics\CyanProblems\obj\Debug\netcoreapp2.1\CyanProblems.dll
 e:\AtCoder\Classics\CyanProblems\obj\Debug\netcoreapp2.1\CyanProblems.pdb
+E:\AtCoder\Classics\CyanProblems\obj\Debug\netcoreapp2.1\CyanProblems.csproj.CoreCompileInputs.cache
+E:\AtCoder\Classics\CyanProblems\obj\Debug\netcoreapp2.1\CyanProblems.genruntimeconfig.cache

@@ -50,6 +50,76 @@ namespace CyanProblems
             WriteLine(result.ToString().TrimEnd(' '));
             ReadKey();
         }
+
+        class PriorityQueue_Asc
+        {
+            List<int> data;
+            internal PriorityQueue_Asc()
+            {
+                data = new List<int>();
+            }
+
+            internal void Push(int x)
+            {
+                int cur = data.Count();
+                data.Add(x);
+                UpHeap(cur);
+            }
+
+            internal int Pop()
+            {
+                int ret = data.First();
+                data[0] = data.Last();
+                data.RemoveAt(Count() - 1);
+                DownHeap(0);
+                return ret;
+            }
+
+            internal int Count()
+            {
+                return data.Count();
+            }
+
+            private void UpHeap(int idx)
+            {
+                if (idx == 0) return;
+                int child = idx;
+                int parent = (child % 2 == 0 ? (child - 2) / 2 : (child - 1) / 2);
+                if (data[child] < data[parent])
+                {
+                    BaseAlgorithm ba = new BaseAlgorithm();
+                    ba.Swap(data[child], data[parent]);
+                    UpHeap(parent);
+                }
+            }
+
+            private void DownHeap(int idx)
+            {
+                if (idx >= Count()) return;
+                int parent = idx;
+                int child = idx;
+                if (parent * 2 + 1 < Count() && data[parent * 2 + 1] < data[parent])
+                {
+                    child = parent * 2 + 1;                
+                }
+
+                if (parent * 2 + 2 < Count() && data[parent * 2 + 2] < data[parent])
+                {
+                    if (child != parent * 2 + 1
+                        || data[parent * 2 + 1] > data[parent * 2 + 2])
+                    {
+                        child = parent * 2 + 2;
+                    }                
+                }
+
+                if (child > parent)
+                {
+                    BaseAlgorithm ba = new BaseAlgorithm();
+                    ba.Swap(data[child], data[parent]);
+                    DownHeap(child);
+                }
+            }
+        }
     }
 
     class BaseAlgorithm
@@ -66,75 +136,6 @@ namespace CyanProblems
             int tmp = A;
             A = B;
             B = tmp;
-        }
-    }
-    internal class PriorityQueue_Asc
-    {
-        List<int> data;
-        internal PriorityQueue_Asc()
-        {
-            data = new List<int>();
-        }
-
-        internal void Push(int x)
-        {
-            int cur = data.Count();
-            data.Add(x);
-            UpHeap(cur);
-        }
-
-        internal int Pop()
-        {
-            int ret = data.First();
-            data[0] = data.Last();
-            data.RemoveAt(Count() - 1);
-            DownHeap(0);
-            return ret;
-        }
-
-        internal int Count()
-        {
-            return data.Count();
-        }
-
-        private void UpHeap(int idx)
-        {
-            if (idx == 0) return;
-            int child = idx;
-            int parent = (child % 2 == 0 ? (child - 2) / 2 : (child - 1) / 2);
-            if (data[child] < data[parent])
-            {
-                BaseAlgorithm ba = new BaseAlgorithm();
-                ba.Swap(data[child], data[parent]);
-                UpHeap(parent);
-            }
-        }
-
-        private void DownHeap(int idx)
-        {
-            if (idx >= Count()) return;
-            int parent = idx;
-            int child = idx;
-            if (parent * 2 + 1 < Count() && data[parent * 2 + 1] < data[parent])
-            {
-                child = parent * 2 + 1;                
-            }
-
-            if (parent * 2 + 2 < Count() && data[parent * 2 + 2] < data[parent])
-            {
-                if (child != parent * 2 + 1
-                    || data[parent * 2 + 1] > data[parent * 2 + 2])
-                {
-                    child = parent * 2 + 2;
-                }                
-            }
-
-            if (child > parent)
-            {
-                BaseAlgorithm ba = new BaseAlgorithm();
-                ba.Swap(data[child], data[parent]);
-                DownHeap(child);
-            }
         }
     }
 }
