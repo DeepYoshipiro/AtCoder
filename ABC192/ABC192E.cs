@@ -1,38 +1,36 @@
-﻿// Solution : Dijkstra
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using static System.Console;
 using static System.Math;
 
-namespace ABC191
+namespace ABC192
 {
-    class ABC191E
+    class ABC192E
     {
         internal class WayInfo
         {
-            // public int WayNum{get; set;}
-            internal int Town{get; set;}
-            internal int Time{get; set;}
+            internal int City{get; set;}
+            internal long Time{get; set;}
+            internal long Depart{get; set;}
 
-            // internal wayInfo(int wayNum, int to, int time)
-            internal WayInfo(int town, int time)
+            internal WayInfo(int city, long time, long depart)
             {
-                // WayNum = wayNum;
-                Town = town;
+                City = city;
                 Time = time;
+                Depart = depart;
             }
         }
 
         internal class TakeTime
         {
-            internal int Town{get; set;}
-            internal int Time{get; set;}
+            internal int City{get; set;}
+            internal long Time{get; set;}
 
-            internal TakeTime(int town, int time)
+            internal TakeTime(int city, long time)
             {
-                Town = town;
+                City = city;
                 Time = time;
             }
         }
@@ -119,6 +117,8 @@ namespace ABC191
                 .Select(n => int.Parse(n)).ToArray();
             var N = init[0];
             var M = init[1];
+            var X = init[2];
+            var Y = init[3];
 
             var way = new List<WayInfo>[N + 1]
                 .Select(v => new List<WayInfo>()).ToArray();
@@ -128,59 +128,56 @@ namespace ABC191
                     .Select(n => int.Parse(n)).ToArray();
                 var A = W[0];
                 var B = W[1];
-                var C = W[2];
+                var T = (long)W[2];
+                var K = (long)W[3];
 
-                // way[A].Add(new wayInfo(j, B, C));
-                way[A].Add(new WayInfo(B, C));
+                way[A].Add(new WayInfo(B, T, K));
+                way[B].Add(new WayInfo(A, T, K));
             }
 
-            const int INF = int.MaxValue / 2;
-            for (int i = 1; i <= N; i++)
+            const long INF = long.MaxValue / 2;
+
+            var pq = new PriorityQueue_Dijkstra();
+            pq.Push(new TakeTime(X, 0));
+
+            var ElapsedTime = Enumerable.Repeat<long>(INF, N + 1)
+                .ToArray();
+            ElapsedTime[X] = 0;
+
+            var confirmed = new bool[N + 1];
+
+            while (pq.Count() > 0)
             {
-                // var passed = new bool[M];
-                var SumTime = Enumerable.Repeat<int>(INF, N + 1)
-                    .ToArray();
+                var cur = pq.Pop();
+                if (confirmed[cur.City]) continue;
 
-                // var curTakeTime = Enumerable.Repeat<int>(INF, N + 1)
-                    // .ToArray();
-
-                foreach (WayInfo begin in way[i])
+                foreach (WayInfo next in way[cur.City])
                 {
-                    var ElapsedTime = Enumerable.Repeat<int>(INF, N + 1)
-                        .ToArray();
-                    var pq = new PriorityQueue_Dijkstra();
-                    pq.Push(new TakeTime(begin.Town, begin.Time));
+                    if (confirmed[next.City]) continue;
 
-                    ElapsedTime[begin.Town] = 
-                        begin.Time < ElapsedTime[begin.Town]
-                        ? begin.Time : ElapsedTime[begin.Town];
-
-                    var confirmed = new bool[N + 1];
-                    while (pq.Count() > 0)
+                    var arrivedTime = ElapsedTime[cur.City] + next.Time;
+                    long transferTime = 0;
+                    if (cur.City != Y)
                     {
-                        var cur = pq.Pop();
-                        if (confirmed[cur.Town]) continue;
-
-                        foreach (WayInfo next in way[cur.Town])
+                        if (next.Depart == 1) transferTime = 0;
+                        else 
                         {
-                            if (confirmed[next.Town]) continue;
-                            
-                            ElapsedTime[next.Town]
-                                = ElapsedTime[cur.Town] + next.Time < ElapsedTime[next.Town]
-                                ? ElapsedTime[cur.Town] + next.Time
-                                : ElapsedTime[next.Town];
-                            pq.Push(new TakeTime(next.Town, next.Time));
+                            transferTime = (next.Depart - (cur.Time % next.Depart)) % next.Depart;
+                            if (transferTime < 0) transferTime += next.Depart;
                         }
-
-                        confirmed[cur.Town] = true;
-                        if (confirmed[i]) break;
                     }
 
-                    if (SumTime[i] > ElapsedTime[i]) SumTime[i] = ElapsedTime[i];
+                    ElapsedTime[next.City]
+                        = arrivedTime + transferTime < ElapsedTime[next.City]
+                        ? arrivedTime + transferTime
+                        : ElapsedTime[next.City];
+                    pq.Push(new TakeTime(next.City, next.Time));
                 }
 
-                WriteLine(SumTime[i] < INF ? SumTime[i].ToString() : "-1");
+                confirmed[cur.City] = true;
             }
+
+            WriteLine(ElapsedTime[Y] < INF ? ElapsedTime[Y].ToString() : "-1");
             ReadKey();
         }
     }
