@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Solition : Dijkstra
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
@@ -155,23 +156,18 @@ namespace ABC192
                 {
                     if (confirmed[next.City]) continue;
 
-                    var arrivedTime = ElapsedTime[cur.City] + next.Time;
                     long transferTime = 0;
                     if (cur.City != Y)
                     {
-                        if (next.Depart == 1) transferTime = 0;
-                        else 
-                        {
-                            transferTime = (next.Depart - (cur.Time % next.Depart)) % next.Depart;
-                            if (transferTime < 0) transferTime += next.Depart;
-                        }
+                        transferTime = (next.Depart - (cur.Time % next.Depart)) % next.Depart;
                     }
 
+                    var arrivedTime = ElapsedTime[cur.City] + transferTime + next.Time;
+
                     ElapsedTime[next.City]
-                        = arrivedTime + transferTime < ElapsedTime[next.City]
-                        ? arrivedTime + transferTime
-                        : ElapsedTime[next.City];
-                    pq.Push(new TakeTime(next.City, next.Time));
+                        = arrivedTime < ElapsedTime[next.City]
+                        ? arrivedTime : ElapsedTime[next.City];
+                    pq.Push(new TakeTime(next.City, ElapsedTime[next.City]));
                 }
 
                 confirmed[cur.City] = true;
