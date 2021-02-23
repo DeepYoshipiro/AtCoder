@@ -12,14 +12,11 @@ namespace ABC191
     {
         internal class WayInfo
         {
-            // public int WayNum{get; set;}
             internal int Town{get; set;}
             internal int Time{get; set;}
 
-            // internal wayInfo(int wayNum, int to, int time)
             internal WayInfo(int town, int time)
             {
-                // WayNum = wayNum;
                 Town = town;
                 Time = time;
             }
@@ -130,56 +127,61 @@ namespace ABC191
                 var B = W[1];
                 var C = W[2];
 
-                // way[A].Add(new wayInfo(j, B, C));
                 way[A].Add(new WayInfo(B, C));
             }
 
             const int INF = int.MaxValue / 2;
             for (int i = 1; i <= N; i++)
             {
-                // var passed = new bool[M];
-                var SumTime = Enumerable.Repeat<int>(INF, N + 1)
+                // var SumTime = Enumerable.Repeat<int>(INF, N + 1)
+                //     .ToArray();
+
+                var pq = new PriorityQueue_Dijkstra();
+
+                var ElapsedTime = Enumerable.Repeat<int>(INF, N + 1)
                     .ToArray();
 
-                // var curTakeTime = Enumerable.Repeat<int>(INF, N + 1)
-                    // .ToArray();
-
+                var firstReached = new bool[N + 1];
                 foreach (WayInfo begin in way[i])
                 {
-                    var ElapsedTime = Enumerable.Repeat<int>(INF, N + 1)
-                        .ToArray();
-                    var pq = new PriorityQueue_Dijkstra();
-                    pq.Push(new TakeTime(begin.Town, begin.Time));
-
                     ElapsedTime[begin.Town] = 
                         begin.Time < ElapsedTime[begin.Town]
                         ? begin.Time : ElapsedTime[begin.Town];
-
-                    var confirmed = new bool[N + 1];
-                    while (pq.Count() > 0)
-                    {
-                        var cur = pq.Pop();
-                        if (confirmed[cur.Town]) continue;
-
-                        foreach (WayInfo next in way[cur.Town])
-                        {
-                            if (confirmed[next.Town]) continue;
-                            
-                            ElapsedTime[next.Town]
-                                = ElapsedTime[cur.Town] + next.Time < ElapsedTime[next.Town]
-                                ? ElapsedTime[cur.Town] + next.Time
-                                : ElapsedTime[next.Town];
-                            pq.Push(new TakeTime(next.Town, ElapsedTime[next.Town]));
-                        }
-
-                        confirmed[cur.Town] = true;
-                        if (confirmed[i]) break;
-                    }
-
-                    if (SumTime[i] > ElapsedTime[i]) SumTime[i] = ElapsedTime[i];
+                    firstReached[begin.Town] = true;
                 }
 
-                WriteLine(SumTime[i] < INF ? SumTime[i].ToString() : "-1");
+                for (int j = 1; j <= N; j++)
+                {
+                    if (firstReached[j])
+                    {
+                        pq.Push(new TakeTime(j, ElapsedTime[j]));
+                    }
+                }
+
+                var confirmed = new bool[N + 1];
+                while (pq.Count() > 0)
+                {
+                    var cur = pq.Pop();
+                    if (confirmed[cur.Town]) continue;
+
+                    foreach (WayInfo next in way[cur.Town])
+                    {
+                        if (confirmed[next.Town]) continue;
+                        
+                        ElapsedTime[next.Town]
+                            = ElapsedTime[cur.Town] + next.Time < ElapsedTime[next.Town]
+                            ? ElapsedTime[cur.Town] + next.Time
+                            : ElapsedTime[next.Town];
+                        pq.Push(new TakeTime(next.Town, ElapsedTime[next.Town]));
+                    }
+
+                    confirmed[cur.Town] = true;
+                    if (confirmed[i]) break;
+                }
+
+                // if (SumTime[i] > ElapsedTime[i]) SumTime[i] = ElapsedTime[i];
+
+                WriteLine(ElapsedTime[i] < INF ? ElapsedTime[i].ToString() : "-1");
             }
             ReadKey();
         }
