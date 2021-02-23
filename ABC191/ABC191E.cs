@@ -169,7 +169,7 @@ namespace ABC191
                                 = ElapsedTime[cur.Town] + next.Time < ElapsedTime[next.Town]
                                 ? ElapsedTime[cur.Town] + next.Time
                                 : ElapsedTime[next.Town];
-                            pq.Push(new TakeTime(next.Town, next.Time));
+                            pq.Push(new TakeTime(next.Town, ElapsedTime[next.Town]));
                         }
 
                         confirmed[cur.Town] = true;
