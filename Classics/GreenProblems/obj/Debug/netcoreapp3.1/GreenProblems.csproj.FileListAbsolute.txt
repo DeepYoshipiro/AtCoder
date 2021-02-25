@@ -1,0 +1,12 @@
+E:\AtCoder\Classics\GreenProblems\bin\Debug\netcoreapp3.1\GreenProblems.exe
+E:\AtCoder\Classics\GreenProblems\bin\Debug\netcoreapp3.1\GreenProblems.deps.json
+E:\AtCoder\Classics\GreenProblems\bin\Debug\netcoreapp3.1\GreenProblems.runtimeconfig.json
+E:\AtCoder\Classics\GreenProblems\bin\Debug\netcoreapp3.1\GreenProblems.runtimeconfig.dev.json
+E:\AtCoder\Classics\GreenProblems\bin\Debug\netcoreapp3.1\GreenProblems.dll
+E:\AtCoder\Classics\GreenProblems\bin\Debug\netcoreapp3.1\GreenProblems.pdb
+E:\AtCoder\Classics\GreenProblems\obj\Debug\netcoreapp3.1\GreenProblems.AssemblyInfoInputs.cache
+E:\AtCoder\Classics\GreenProblems\obj\Debug\netcoreapp3.1\GreenProblems.AssemblyInfo.cs
+E:\AtCoder\Classics\GreenProblems\obj\Debug\netcoreapp3.1\GreenProblems.csproj.CoreCompileInputs.cache
+E:\AtCoder\Classics\GreenProblems\obj\Debug\netcoreapp3.1\GreenProblems.dll
+E:\AtCoder\Classics\GreenProblems\obj\Debug\netcoreapp3.1\GreenProblems.pdb
+E:\AtCoder\Classics\GreenProblems\obj\Debug\netcoreapp3.1\GreenProblems.genruntimeconfig.cache
