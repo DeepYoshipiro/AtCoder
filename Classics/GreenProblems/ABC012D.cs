@@ -12,9 +12,9 @@ namespace GreenProblems
         internal class RouteInfo
         {
             internal int To{get; set;}
-            internal long Time{get; set;}
+            internal int Time{get; set;}
 
-            internal RouteInfo(int to, long time)
+            internal RouteInfo(int to, int time)
             {
                 To = to;
                 Time = time;
@@ -31,45 +31,30 @@ namespace GreenProblems
             var Route = new List<RouteInfo>[N + 1]
                 .Select(v => new List<RouteInfo>()).ToArray();
 
-            const long INF = long.MaxValue / 2;
+            const int INF = int.MaxValue / 2;
             for (int i = 0; i < M; i++)
             {
                 var way = ReadLine().Split()
                     .Select(n => int.Parse(n)).ToArray();
                 var A = way[0];
                 var B = way[1];
-                var T = (long)way[2];
+                var T = way[2];
 
                 Route[A].Add(new RouteInfo(B, T));
                 Route[B].Add(new RouteInfo(A, T));
             }
 
-            int startStop = 0;
-            int minDeg = N;
+            int result = INF;
             for (int j = 1; j <= N; j++)
             {
-                var deg = Route[j].Count();
-                if (deg < minDeg)
-                {
-                    startStop = j;
-                    minDeg = deg;
-                } 
-            }
-
-            var parent = new int[N + 1];
-            var reachedTime = new long[2][];
-            reachedTime[0] = Enumerable.Repeat<long>(INF, N + 1).ToArray();
-            reachedTime[1] = Enumerable.Repeat<long>(INF, N + 1).ToArray();
-
-            for (int k = 0; k < 2; k++)
-            {
+                var reachedTime = Enumerable.Repeat<int>(INF, N + 1).ToArray();
                 var searched = new bool[N + 1];
 
                 int finalStop = 0;
                 var pq = new PriorityQueue_Dijkstra();
-                pq.Push(new TakeTime(startStop, 0));
+                pq.Push(new TakeTime(j, 0));
 
-                reachedTime[k][startStop] = 0;
+                reachedTime[j] = 0;
 
                 while (pq.Count() > 0)
                 {
@@ -77,44 +62,36 @@ namespace GreenProblems
                     if (searched[cur.BusStop]) continue;
                     searched[cur.BusStop] = true;
                     finalStop = cur.BusStop;
+                    // if (reachedTime[cur.BusStop] > result) continue;
 
                     foreach (RouteInfo next in Route[cur.BusStop])
                     {
                         if (searched[next.To]) continue;
 
                         var nomineeTime = cur.ArrivedTime + next.Time;
-                        if (reachedTime[k][next.To] > nomineeTime)
+                        if (reachedTime[next.To] > nomineeTime)
                         {
-                            parent[next.To] = cur.BusStop;
-                            reachedTime[k][next.To] = nomineeTime;
+                            reachedTime[next.To] = nomineeTime;
                         }
 
-                        pq.Push(new TakeTime(next.To, reachedTime[k][next.To]));
+                        pq.Push(new TakeTime(next.To, reachedTime[next.To]));
                     }
                 }
-                startStop = finalStop;
+
+                result = reachedTime[finalStop] < result 
+                    ? reachedTime[finalStop] : result;
             }
 
-            long minReachedTimeDiff = INF;
-            long maxRideTime = 0;
-            for (int j = 1; j <= N; j++)
-            {
-                if (Abs(reachedTime[1][j] - reachedTime[0][j]) < minReachedTimeDiff)
-                {
-                    minReachedTimeDiff = Abs(reachedTime[1][j] - reachedTime[0][j]);
-                    maxRideTime = Max(reachedTime[0][j], reachedTime[1][j]);
-                }
-            }
-            WriteLine(maxRideTime.ToString());
+            WriteLine(result.ToString());
             ReadKey();
         }
 
         internal class TakeTime
         {
             internal int BusStop{get; set;}
-            internal long ArrivedTime{get; set;}
+            internal int ArrivedTime{get; set;}
 
-            internal TakeTime(int busStop, long arrivedTime)
+            internal TakeTime(int busStop, int arrivedTime)
             {
                 BusStop = busStop;
                 ArrivedTime = arrivedTime;
