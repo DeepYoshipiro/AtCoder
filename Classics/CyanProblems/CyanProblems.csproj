@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>CyanProblems.ARC024B</StartupObject>
+    <StartupObject>CyanProblems.Donuts2015B</StartupObject>
   </PropertyGroup>
 
 </Project>
