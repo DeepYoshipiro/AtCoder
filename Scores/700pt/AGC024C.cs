@@ -13,10 +13,10 @@ namespace _700pt
         {
             int N = int.Parse(ReadLine());
 
-            int[] A = new int[N];
+            long[] A = new long[N];
             for (int i = 0; i < N; i++)
             {
-                A[i] = int.Parse(ReadLine());
+                A[i] = long.Parse(ReadLine());
             }
 
             bool possible = true;
@@ -28,31 +28,20 @@ namespace _700pt
 
             if (!possible)
             {
-                WriteLine("−1");
+                WriteLine("-1");
                 ReadKey();
                 return;
             }
         
-            int[] X = new int[N];
-            int certain = N;
-            for (int cur = N - 1; cur > 0; cur--)
+            long result = 0;
+            for (int i = N - 1; i > 0; i--)
             {
-                while (A[cur] != 1)
-                {
-                    if (A[cur] == 0) certain = cur;
-                    cur--;
-                }
-                A[cur] = A[cur - 1] + 1;
-                int cur2 = cur;
-                while (cur2 < certain)
-                {
-                    A[cur2] = A[cur2 - 1] + 1;   
-                }
+                result += (A[i] - A[i - 1] == 1)
+                    ? 1 : A[i];
             }
 
-
-
-
+            WriteLine(result.ToString());
+            ReadKey();
         }
     }
 }
