@@ -1,3 +1,4 @@
+// Solution : Union-Find
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,15 +47,15 @@ namespace ABC157
             
             for (int j = 1; j <= N; j++)
             {
-                groupMemberCnt[uf.Parent[j]]++;
+                groupMemberCnt[uf.Root(j)]++;
             }
             
             for (int j = 1; j <= N; j++)
             {
-                if (j != uf.Parent[j])
+                if (j != uf.Root(j))
                 {
                     groupMemberCnt[j]
-                     = groupMemberCnt[uf.Parent[j]];
+                     = groupMemberCnt[uf.Root(j)];
                 }
                 friendCandidateCnt[j] = groupMemberCnt[j] - 1;
                 friendCandidateCnt[j] -= friend[j].Count();
@@ -67,7 +68,7 @@ namespace ABC157
                 var x = block[0];
                 var y = block[1];
 
-                if (uf.Parent[x] == uf.Parent[y])
+                if (uf.Root(x) == uf.Root(y))
                 { 
                     friendCandidateCnt[x]--;
                     friendCandidateCnt[y]--;
@@ -81,36 +82,36 @@ namespace ABC157
             WriteLine();
             ReadKey();
         }
-    }
 
-    internal class Union_Find
-    {
-        internal int[] Parent;
-        internal Union_Find(int N)
+        internal class Union_Find
         {
-            Parent = new int[N + 1];
-            for (int i = 1; i <= N; i++)
+            private int[] Parent;
+            internal Union_Find(int N)
             {
-                Parent[i] = i;
+                Parent = new int[N + 1];
+                for (int i = 1; i <= N; i++)
+                {
+                    Parent[i] = i;
+                }
             }
-        }
 
-        internal void Union(int x, int y)
-        {
-            int p = Root(x);
-            int q = Root(y);
+            internal void Union(int x, int y)
+            {
+                int p = Root(x);
+                int q = Root(y);
 
-            if (p == q) return;
-            Parent[q] = p;
-            Parent[y] = p;
+                if (p == q) return;
+                Parent[q] = p;
+                Parent[y] = p;
 
-            return;  
-        }
+                return;  
+            }
 
-        internal int Root(int x)
-        {
-            if (x == Parent[x]) return x;
-            return Parent[x] = Root(Parent[x]);
+            internal int Root(int x)
+            {
+                if (x == Parent[x]) return x;
+                return Parent[x] = Root(Parent[x]);
+            }
         }
     }
 }

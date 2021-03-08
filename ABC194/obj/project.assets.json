@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\AtCoder\\ABC157\\ABC157.csproj",
-      "projectName": "ABC157",
-      "projectPath": "E:\\AtCoder\\ABC157\\ABC157.csproj",
+      "projectUniqueName": "E:\\AtCoder\\ABC194\\ABC194.csproj",
+      "projectName": "ABC194",
+      "projectPath": "E:\\AtCoder\\ABC194\\ABC194.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "E:\\AtCoder\\ABC157\\obj\\",
+      "outputPath": "E:\\AtCoder\\ABC194\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
