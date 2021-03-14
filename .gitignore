@@ -333,3 +333,13 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+ABC190/obj/project.nuget.cache
+ABC190/obj/Debug/netcoreapp3.1/ABC190.assets.cache
+ABC190/obj/Debug/netcoreapp3.1/ABC190.csprojAssemblyReference.cache
+ABC190/obj/Debug/netcoreapp3.1/ABC190.dll
+ABC190/obj/Debug/netcoreapp3.1/ABC190.genruntimeconfig.cache
+ABC190/obj/Debug/netcoreapp3.1/ABC190.pdb
+ABC190/bin/Debug/netcoreapp3.1/ABC190.dll
+ABC190/bin/Debug/netcoreapp3.1/ABC190.exe
+ABC190/bin/Debug/netcoreapp3.1/ABC190.pdb
+ABC190/obj/project.assets.json
