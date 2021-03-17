@@ -9,17 +9,12 @@ namespace CyanProblems
 {
     class ABC021C
     {
-        static internal HashSet<int>[] parent;
-        static internal int A;
-        static internal long[] dp;
-        static internal bool[] calculated;
-
         static void Main(string[] args)
         {
             var N = int.Parse(ReadLine());
             var fromTo = ReadLine().Split()
                 .Select(n => int.Parse(n)).ToArray();
-            A = fromTo[0];
+            var A = fromTo[0];
             var B = fromTo[1];
 
             var M = int.Parse(ReadLine());
@@ -38,7 +33,7 @@ namespace CyanProblems
             }
 
             var searched = new bool[N + 1];
-            parent = new HashSet<int>[N + 1]
+            var parent = new HashSet<int>[N + 1]
                 .Select(v => new HashSet<int>()).ToArray();
             var dist = Enumerable.Repeat<int>(int.MaxValue / 2, N + 1)
                 .ToArray();
@@ -76,8 +71,9 @@ namespace CyanProblems
             }
 
             long MOD = 1000000000 + 7;
-            dp = new long[N + 1];
-            calculated = new bool[N + 1];
+
+            var dp = new long[N + 1];
+            var calculated = new bool[N + 1];
             var dpQue = new Queue<long>();
             dp[B] = 1;
             dpQue.Enqueue(B);
@@ -94,23 +90,11 @@ namespace CyanProblems
                 }
                 calculated[cur] = true;
             }
-            // DFS(B);
 
             var result = dp[A];
 
             WriteLine(result.ToString());
             ReadKey();
-        }
-
-        static void DFS(int cur)
-        {
-            if (cur == A) return;
-            // long result = 1;
-            foreach (int prev in parent[cur])
-            {
-                dp[prev] += dp[cur];
-                DFS(prev);
-            }
         }
     }
 }
