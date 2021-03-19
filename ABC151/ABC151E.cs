@@ -11,33 +11,38 @@ namespace ABC151
     {
         static void Main(string[] args)
         {
-            int[] init = ReadLine().Split()
+            var init = ReadLine().Split()
                 .Select(n => int.Parse(n)).ToArray();
-            int N = init[0];
-            int K = init[1];
+            var N = init[0];
+            var K = init[1];
 
             long[] A = ReadLine().Split()
                 .Select(n => long.Parse(n))
                 .OrderByDescending(n => n).ToArray();
 
-            long result = 0;
-            int k = K;
-            int[] maximim = new int[N];
-            int[] minimum = new int[N];
-            for (int i = K; i > 0; i--)
+            long[] Sum = new long[N];
+            Sum[0] = A[0];
+            for (int i = 1; i < N; i++)
             {
-                maximim[N - K + i - 1] = i;
-                minimum[K - i] = K;
-            }
-            for (int i = 0; i < N; i++)
-            {
-                result += maximim[i] * A[i];
-                result %= 100000007;
-                result -= minimum[i] * A[i];
-                result %= 100000007;
+                Sum[i] = Sum[i - 1] + A[i];
             }
 
-            if (result < 0) result += 100000007;
+            if (K == 1)
+            {
+                WriteLine("0");
+                ReadKey();
+                return;
+            }
+
+            long result = 0;
+            for (int i = 0; i < N - K + 1; i++)
+            {
+                var add = (long)((N - K + 2) - i) * A[i];
+                var sub = Sum[N - 1] - Sum[i + K - 2];
+                result += (long)((N - K + 2) - i) * A[i] - (Sum[N - 1] - Sum[i + K - 2]);
+                result %= 1000000000 + 7;
+            }
+
             WriteLine(result.ToString());
             ReadKey();
         }
