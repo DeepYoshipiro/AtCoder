@@ -150,6 +150,8 @@ namespace Library
         internal IEnumerable<long> Sieve(long N)
         {
             var prime = new bool[N + 1].Select(v => true).ToArray();
+            prime[0] = false;
+            prime[1] = false;
 
             for (long i = 2; i * i <= N; i++)
             {
