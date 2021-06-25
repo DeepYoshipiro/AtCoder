@@ -22,11 +22,11 @@ namespace ABC176
 
             int maxTargetCntH = 0;
             int maxTargetCntW = 0;   
-            var TargetPos = new HashSet<long>();
+            var TargetPos = new HashSet<(int, int)>();
             for (int i = 0; i < M; i++)
             {
                 var info = ReadLine().Split()
-                    .Select(n => long.Parse(n)).ToArray();
+                    .Select(n => int.Parse(n)).ToArray();
                 var h = info[0];
                 var w = info[1];
 
@@ -38,7 +38,7 @@ namespace ABC176
                 if (maxTargetCntW < targetCntW[w])
                     maxTargetCntW = targetCntW[w];
                 
-                TargetPos.Add((h - 1) * (long)W + w);
+                TargetPos.Add((h, w));
             }
 
             var maxTargetH = new List<int>();
@@ -60,7 +60,7 @@ namespace ABC176
             {
                 for (int k = 0; k < maxTargetW.Count(); k++)
                 {
-                    if (!TargetPos.Contains((maxTargetH[j] - 1) * (long)W + maxTargetW[k]))
+                    if (!TargetPos.Contains((maxTargetH[j], maxTargetW[k])))
                     {
                         putAllBombPosExistTarget = false;
                         break;
