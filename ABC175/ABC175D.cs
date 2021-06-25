@@ -12,8 +12,8 @@ namespace ABC175
         static void Main(string[] args)
         {
             var init = ReadLine().Split()
-                .Select(n => int.Parse(n)).ToArray();
-            var N = init[0];
+                .Select(n => long.Parse(n)).ToArray();
+            var N = (int)init[0];
             var K = init[1];
 
             var P = new int[]{0}
@@ -31,7 +31,7 @@ namespace ABC175
                 uf.Union(i, P[i]);
             }
 
-            var P_Length = new Dictionary<int, int>();
+            var P_Length = new Dictionary<int, long>();
             for (int i = 1; i <= N; i++)
             {
                 var start = uf.Root(i);
@@ -67,7 +67,7 @@ namespace ABC175
                 long groupScore = 0;
                 if (sum[count] > 0)
                 {
-                    groupScore = (long)(K / count) * sum[count];
+                    groupScore = K / count * sum[count];
                 }
 
                 var curK = K % count;
