@@ -24,7 +24,7 @@ namespace ABC174
             var rsq = new RSQ(N + 1);
             for (int i = 1; i <= N; i++)
             {
-                rsq.Update(i, C[i]);
+                // rsq.Update(i, C[i]);
             }
 
             // var N = long.Parse(ReadLine());
@@ -59,16 +59,16 @@ namespace ABC174
                 sum = new int[N];
             }
 
-            internal Update(int idx, int val)
-            {
-                idx += n - 1;
-                sum[idx] = val
+            // internal Update(int idx, int val)
+            // {
+            //     idx += n - 1;
+            //     sum[idx] = val
 
-                while (idx > 0)
-                {
+            //     while (idx > 0)
+            //     {
                     
-                }
-            }
+            //     }
+            // }
         }
     }
 }
